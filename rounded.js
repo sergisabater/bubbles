@@ -9,25 +9,22 @@ Example.rounded = function() {
         Composite = Matter.Composite,
         Bodies = Matter.Bodies;
 
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-
     // create engine
     var engine = Engine.create(),
         world = engine.world;
 
-    // disable gravity
+    // ✅ Eliminar gravedad
     engine.gravity.y = 0;
+    engine.gravity.x = 0;
 
     // create renderer
     var render = Render.create({
         element: document.body,
         engine: engine,
         options: {
-            width: width,
-            height: height,
+            width: 800,
+            height: 600,
             showAxes: true,
-            wireframes: false,
             background: '#fafafa'
         }
     });
@@ -38,15 +35,15 @@ Example.rounded = function() {
     var runner = Runner.create();
     Runner.run(runner, engine);
 
-    // add walls
+    // add bodies
     Composite.add(world, [
-        Bodies.rectangle(width / 2, -25, width, 50, { isStatic: true }),
-        Bodies.rectangle(width / 2, height + 25, width, 50, { isStatic: true }),
-        Bodies.rectangle(-25, height / 2, 50, height, { isStatic: true }),
-        Bodies.rectangle(width + 25, height / 2, 50, height, { isStatic: true })
+        // walls
+        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
+        Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
+        Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
+        Bodies.rectangle(0, 300, 50, 600, { isStatic: true })
     ]);
 
-    // add floating shapes
     Composite.add(world, [
         Bodies.rectangle(200, 200, 100, 100, { chamfer: { radius: 20 } }),
         Bodies.rectangle(300, 200, 100, 100, { chamfer: { radius: [90, 0, 0, 0] } }),
@@ -71,13 +68,11 @@ Example.rounded = function() {
     Composite.add(world, mouseConstraint);
     render.mouse = mouse;
 
-    // fit the scene to the viewport
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
-        max: { x: width, y: height }
+        max: { x: 800, y: 600 }
     });
 
-    // context for MatterTools.Demo
     return {
         engine: engine,
         runner: runner,
@@ -90,7 +85,7 @@ Example.rounded = function() {
     };
 };
 
-Example.rounded.title = 'Rounded Corners (Floating)';
+Example.rounded.title = 'Rounded Corners (Chamfering)';
 Example.rounded.for = '>=0.14.2';
 
 if (typeof module !== 'undefined') {
