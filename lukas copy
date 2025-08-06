@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: sans-serif;
+      cursor: default; /* cursor normal por defecto */
+      transition: cursor 0.3s ease;
+    }
+
+    /* Cursor personalizado, oculto por defecto */
+    body.custom-cursor {
+      cursor: url('assets/cursor-custom.png') 16 16, auto; /* Cambia 'cursor-custom.png' por la ruta real de tu icono */
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    @font-face {
+      font-family: '8bit';
+      src: url('fonts/8-bit-hud.ttf') format('truetype');
+    }
+
+    .sidebar {
+      background-color: #DCDCDC;
+      color: #181820;
+      padding: 10px;
+      width: 17%;
+      border-right: 2px solid #000000;
+      padding-left: 15px;
+    }
+
+    .content {
+      background-color: #1F1F29;
+      color: #BB474E;
+      padding: 20px;
+      width: 83%;
+      overflow-y: auto;
+      font-family: '8bit', monospace;
+    }
+
+    /* Ejemplo de contenido */
+    .sidebar h2, .content h1 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .sidebar h3 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      max-width: 170px;
+      color: #181820;
+    }
+
+    .sidebar p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .sidebar p a {
+      text-decoration: none;
+      color: #181820c3;
+      font-weight: 600;
+    }
+
+    .sidebar ul {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    .sidebar ul li::before {
+      content: "- ";
+      color: #CBA6F7;
+      font-weight: lighter;
+      position: relative;
+      left: 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #18182087;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .sidebar ul li a:hover {
+      color: #BB474E;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Sergi Sabater</h2>
+      <h3>Sound Designer & Audio Implementer</h3>
+      <p><a href="#">@sergisabater</a></p>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <h1>--</h1>
+      <p>-</p>
+    </div>
+  </div>
+
+  <script>
+    let timeoutId;
+
+    function activateCustomCursor() {
+      document.body.classList.add('custom-cursor');
+      clearTimeout(timeoutId);
+      // Si no hay movimiento en 2 segundos, quita cursor personalizado
+      timeoutId = setTimeout(() => {
+        document.body.classList.remove('custom-cursor');
+      }, 2000);
+    }
+
+    // Detecta movimiento del ratón y activa el cursor personalizado
+    window.addEventListener('mousemove', activateCustomCursor);
+  </script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página Básica con Ibarra Real Nova</title>
+
+  <!-- Fuentes y iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* Reset y base */
+    body {
+  font-family: 'Ibarra Real Nova', serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+  display: flex; /* Hace que los hijos se coloquen en fila */
+  min-height: 100vh; /* Para ocupar toda la altura */
+}
+
+    /* Header fijo */
+    header {
+  flex: 1; /* Ocupa el 50% del ancho */
+  max-width: 50%;
+  background-color: #fffffff1;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Para que el header sea scrollable si tiene mucho contenido */
+}
+
+    .contenedor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: left;
+    }
+
+    .header-img img {
+      width: 100px;       /* tamaño del cuadrado */
+      height: auto;
+      object-fit: cover;  /* mantiene proporción */
+      border-radius: 8px; /* esquinas redondeadas (opcional) */
+      opacity: 1;       /* más transparente */
+    }
+    .layout {
+  display: flex;
+  min-height: 100vh; /* que ocupe toda la altura */
+}
+
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 400;
+      color: #000;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    h3 {
+      font-weight: 900;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    a.home-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .titulo-subtitle, .titulo-others {
+      color: #000;
+    }
+
+    .titulo-others a.link-others {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #000;
+      text-decoration: underline;
+      transition: font-size 0.1s ease, font-weight 0.1s ease;
+      margin-right: 0.3rem;
+    }
+
+    .titulo-others a.link-others:hover {
+      font-weight: 500;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* Social icons */
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #555;
+      margin: 0 0.1rem;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0s ease, font-size 0.1s ease;
+    }
+
+    .social-icons a:hover {
+      font-size: 1.1rem;
+    }
+
+    .social-icons a:nth-child(1):hover {
+      color: #0077b5; /* LinkedIn */
+    }
+
+    .social-icons a:nth-child(2):hover {
+      color: #5865F2; /* Discord */
+    }
+
+    /* Main y Sections */
+    main, section {
+        flex: 1; /* También ocupa el 50% */
+  max-width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+    }
+
+    p {
+      margin-top: 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Proyectos */
+    .proyecto {
+      font-family: 'Ibarra Real Nova', serif;
+      font-size: 1rem;
+      margin-bottom: 5px;
+      display: inline-block;
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.1s ease, font-weight 0.1s ease, font-size 0.1s ease;
+    }
+
+    .proyecto span {
+      padding: 0;
+    }
+
+    .fecha, .titulo, .dev, .detalle {
+      color: #000;
+    }
+
+    .detalle {
+      color: #000000d4;
+      margin-left: 0;
+      letter-spacing: 0;
+    }
+
+    .titulo-dev {
+      display: inline-block;
+      text-decoration: underline;
+      text-underline-offset: 0.1rem;
+      color: #333;
+    }
+
+    .proyecto:hover .fecha {
+      font-size: 0.85rem;
+    }
+
+    .proyecto:hover .titulo,
+    .proyecto:hover .dev {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .proyecto:hover .dev {
+      color: #4401ff;
+    }
+
+    .proyecto:hover .detalle {
+      font-size: 0.95rem;
+    }
+
+    .proyecto:hover .titulo-dev {
+      text-decoration-color: #000;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      color: #555;
+      background-color: #fffffff1; /* Fondo sólido para que no se vea el contenido detrás */
+      z-index: 1000; /* Para que quede por encima de otros elementos */
+    }
+
+    /* Botón sonidos (comentado en HTML) */
+    .sound-container {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    #sound-text {
+      font-size: 1rem;
+      margin: 0.5rem 0 0 0;
+      display: block;
+    }
+
+    #sound-btn {
+      background-color: #333;
+      color: #fff;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    #sound-btn:hover {
+      background-color: #acabab;
+      transform: scale(1.05);
+    }
+
+    #sound-btn:active {
+      background-color: #333;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      animation: juicy-press 0.25s ease;
+    }
+
+    @keyframes juicy-press {
+      0% { transform: scale(1); }
+      40% { transform: scale(0.9); }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+  </style>
+</head>
+<body>
+<div class="layout"></div>
+  <header>
+    <div class="contenedor-header">
+      <div class="header-text">
+        <h1><a href="#" id="link-main" class="home-link">Sergi Sabater</a></h1>
+        <h2 class="titulo-subtitle">Sound designer specializing in videogames.</h2>
+        <h2 class="titulo-others">
+          <a href="#" id="link-bio" class="link-others">About</a> /
+          <a href="#" id="link-legal" class="link-others">Legal</a>
+        </h2>
+
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://discord.gg/tu-invitacion" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- <div class="header-img">
+        <img src="me.jpg" alt="Imagen Sergi">
+      </div> -->
+    </div>
+  </header>
+
+  <main id="main-content" style="display: block;">
+
+    <h3>Game Credits</h3>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.26 (In development) /</span>
+      <span class="titulo-dev">
+        <span class="titulo">???</span>
+        <span class="dev">/ Lunheim Studios</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
+    </a>
+    <br>
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.26 (In development) /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Silberheim</span>
+        <span class="dev">/ Beyond Worlds</span>
+      </span>
+      <span class="detalle">[Sound design]</span>
+    </a>
+    <br>
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.26 (In development) /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Trooops! (Provisional title)</span>
+        <span class="dev">/ Le slo, taletronic</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Godot)]</span>
+    </a>
+    <br>
+
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.25 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Tiny Aquarium (Steam)</span>
+        <span class="dev">/ Lunheim Studios</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
+    </a>
+    <br>
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">I.F.O. (Steam)</span>
+        <span class="dev">/ Le slo, taletronic</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
+    </a>
+    <br>
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Marzanna (itch.io)</span>
+        <span class="dev">/ Le slo, taletronic</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
+    </a>
+    <br>
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.21 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Inner Tao (Steam)</span>
+        <span class="dev">/ Le slo</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
+    </a>
+    <br>
+
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.19 - .22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Inner Tao (itch.io)</span>
+        <span class="dev">/ Le slo</span>
+      </span>
+      <span class="detalle">[Sound design / Audio Programming (Game Maker Studio 2)]</span>
+    </a>
+    <br>
+    <br>
+
+    <h3>Personal Projects</h3>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.25 (In development) /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Bubbl (Provisional title)</span>
+      </span>
+      <span class="detalle">My own tiny game! Made to learn deeper Unity functionalities</span>
+    </a>
+    <br>
+    <br>
+
+    <h3>Practice Designs</h3>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.24 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Reveil</span>
+      </span>
+      <span class="detalle"> [Psychological / Gameplay]</span>
+    </a>
+    <br>    
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.24 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Celestial Bodies. l</span>
+      </span>
+      <span class="detalle"> [Retro - Sci fi / Animation]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.24 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Celestial Bodies. ll</span>
+      </span>
+      <span class="detalle"> [Retro - Sci fi / Animation]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.23 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Super Smash Bros. Ultimate</span>
+      </span>
+      <span class="detalle"> [Action / Cinematic]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.23 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Kinetic Bombardment</span>
+      </span>
+      <span class="detalle"> [Sci fi / VFX]</span>
+    </a>
+    <br>
+    
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.23 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Arcane</span>
+      </span>
+      <span class="detalle"> [Action / Cinematic]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.23 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Hyper Light Breaker</span>
+      </span>
+      <span class="detalle"> [Sci fi / Cinematic]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">The Last of Us Part. ll</span>
+      </span>
+      <span class="detalle"> [Realistic / Gameplay]</span>
+    </a>
+    <br>
+    
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Celeste</span>
+      </span>
+      <span class="detalle"> [Retro / Gameplay]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Dorfromantik</span>
+      </span>
+      <span class="detalle"> [Satisfying / Gameplay]</span>
+    </a>
+    <br>
+    <a href="detalle-proyecto.html" class="proyecto">
+      <span class="fecha">.22 /</span>
+      <span class="titulo-dev">
+        <span class="titulo">Abzu</span>
+      </span>
+      <span class="detalle"> [Organic Sci fi / Gameplay]</span>
+    </a>
+    <br>
+
+  </main>
+
+  <section id="bio-section" style="display: none;">
+    <p>Hellow, good to see you here!<br>
+    This is Sergi — I design sounds and implement audio systems for games.<br>
+    Here you'll find bits about me in a FAQ format.</p>
+
+    <h3>Age and Location:</h3>
+    <p>26 years old.<br>Bad Dürkheim, Germany.</p>
+
+    <h3>Favourite games?</h3>
+    <p>· On life impact: Sky: Children of the Light (I met my partner in the game!)<br>
+    · Exploration & Immersion: Hollow Knight<br>
+    · Storyline : Pokemon Mystery Dungeon: Explorers of the Sky (Made the 9-years-old me cry over a game for the first time...)</p>
+
+    <h3>Favourite sounds in games?</h3>
+    <p>· Hollow Knight Ambiences... They are amazing, you can almost SMELL them.<br>
+    · Dog barks from Inside. I truly believe they couldn't have picked a better sound for it.</p>
+
+    <p>If you would like to chat about nerdy game audio things you can find me on discord or reach out via linkedin :)</p>
+  </section>
+
+  <section id="legal-section" style="display: none;">
+    <h3>Impressum</h3>
+    <h3>Angaben gemäß § 5 TMG:</h3>
+    <p>Sergi Sabater Bote<br>
+      Gerberstraße, 7<br>
+      67098, Bad Dürkheim
+    </p>
+
+    <h3>Kontakt:</h3>
+    <p>quietsergi@gmail.com<br>+34 607 90 67 91</p>
+
+    <h3>Berufsbezeichnung:</h3>
+    <p>Freelancer im Bereich Sounddesign für Videospiele.</p>
+
+    <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
+    <p>Sergi Sabater Bote</p>
+
+    <h3>Hinweis gemäß § 19 UStG:</h3>
+    <p>Als Kleinunternehmer im Sinne des § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+  </section>
+</div>
+
+  <footer>
+    &copy; 2025
+  </footer>
+
+  <script>
+    // Mostrar secciones según clicks en links header
+    const mainContent = document.getElementById('main-content');
+    const bioSection = document.getElementById('bio-section');
+    const legalSection = document.getElementById('legal-section');
+    const linkMain = document.getElementById('link-main');
+    const linkBio = document.getElementById('link-bio');
+    const linkLegal = document.getElementById('link-legal');
+
+    linkMain.addEventListener('click', e => {
+      e.preventDefault();
+      mainContent.style.display = 'block';
+      bioSection.style.display = 'none';
+      legalSection.style.display = 'none';
+    });
+
+    linkBio.addEventListener('click', e => {
+      e.preventDefault();
+      mainContent.style.display = 'none';
+      bioSection.style.display = 'block';
+      legalSection.style.display = 'none';
+    });
+
+    linkLegal.addEventListener('click', e => {
+      e.preventDefault();
+      mainContent.style.display = 'none';
+      bioSection.style.display = 'none';
+      legalSection.style.display = 'block';
+    });
+  </script>
+
+  <script>
+    // Botón sonidos (comentado en HTML, activar solo si se usa)
+    const soundBtn = document.getElementById('sound-btn');
+    const soundText = document.getElementById('sound-text');
+
+    if (soundBtn && soundText) {
+      const sounds = [
+        { name: 'TinyAquarium_Purchase', path: 'sounds/sonido1.mp3' },
+        { name: 'TinyAquarium_Die', path: 'sounds/sonido2.mp3' },
+        { name: 'TinyAquarium_Feed', path: 'sounds/sonido3.mp3' }
+      ];
+
+      soundBtn.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * sounds.length);
+        const selectedSound = sounds[randomIndex];
+        soundText.textContent = `Sound: ${selectedSound.name}`;
+        new Audio(selectedSound.path).play();
+      });
+    }
+  </script>
+</body>
+</html>

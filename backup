@@ -52,7 +52,7 @@
       border: 1px solid #fff;
     }
     .header-img:hover{
-      animation: moverDerechaIzquierda 0.9s ease forwards;
+      animation: moverDerechaIzquierda 0.2s ease forwards;
     }
 
     @keyframes moverDerechaIzquierda {
@@ -196,7 +196,6 @@
     .proyecto:hover .titulo {
       /* font-weight: bold; */
       font-size: 1.3rem;
-      transition: font-size 0.1s ease;
     }
 
     .proyecto:hover .dev {
@@ -372,7 +371,7 @@
   <main id="main-content" style="display: block;">
 
     <h3>Game Credits</h3>
-    <a href="https://www.lunheimstudios.com/" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(In development) .26 //</span>
       <span class="titulo-dev">
         <span class="titulo">???</span>
@@ -382,7 +381,7 @@
     </a>
     <br>
 
-    <a href="https://silberheim.com/de/" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(In development) .26 //</span>
       <span class="titulo-dev">
         <span class="titulo">Silberheim</span>
@@ -392,7 +391,7 @@
     </a>
     <br>
 
-    <a class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(In development) .26 //</span>
       <span class="titulo-dev">
         <span class="titulo">Trooops!</span>
@@ -403,7 +402,7 @@
     <br>
 
 
-    <a href="https://store.steampowered.com/app/2581950/Tiny_Aquarium_Social_Fishkeeping/" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(released) .25 //</span>
       <span class="titulo-dev">
         <span class="titulo">Tiny Aquarium</span>
@@ -413,7 +412,7 @@
     </a>
     <br>
 
-    <a href="https://store.steampowered.com/app/1876000/IFO/" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(released) .22 //</span>
       <span class="titulo-dev">
         <span class="titulo">I.F.O.</span>
@@ -423,7 +422,7 @@
     </a>
     <br>
 
-    <a href="https://le-slo.itch.io/marzanna" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(released) .22 //</span>
       <span class="titulo-dev">
         <span class="titulo">Marzanna</span>
@@ -433,7 +432,7 @@
     </a>
     <br>
 
-    <a href="https://store.steampowered.com/app/1115870/Inner_Tao/" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(released) .21 //</span>
       <span class="titulo-dev">
         <span class="titulo">Inner Tao</span>
@@ -443,10 +442,10 @@
     </a>
     <br>
 
-    <a href="https://le-slo.itch.io/" class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(released) .19 - .22 //</span>
       <span class="titulo-dev">
-        <span class="titulo">Game Jams</span>
+        <span class="titulo">Inner Tao</span>
         <span class="dev">by: Le slo</span>
       </span>
       <span class="detalle">// [Sound design / Audio Programming (Game Maker Studio 2)]</span>
@@ -455,7 +454,7 @@
     <br>
 
     <h3>Personal Projects</h3>
-    <a class="proyecto">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">(In development) .25 //</span>
       <span class="titulo-dev">
         <span class="titulo">Bubbl (Provisional title)</span>
@@ -466,100 +465,92 @@
     <br>
 
     <h3>Practice Designs</h3>
-      
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/952226228">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.24 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Reveil</span>
+        <span class="titulo">Reveil</span>
       </span>
       <span class="detalle">// [Psychological / Gameplay]</span>
     </a>
     <br>    
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/928819896">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.24 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Celestial Bodies. l</span>
+        <span class="titulo">Celestial Bodies. l</span>
       </span>
       <span class="detalle">// [Retro - Sci fi / Animation]</span>
     </a>
     <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/928819991">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.24 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Celestial Bodies. ll</span>
+        <span class="titulo">Celestial Bodies. ll</span>
       </span>
       <span class="detalle">// [Retro - Sci fi / Animation]</span>
     </a>
     <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219135">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.23 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Super Smash Bros. Ultimate</span>
+        <span class="titulo">Super Smash Bros. Ultimate</span>
       </span>
       <span class="detalle">// [Action / Cinematic]</span>
     </a>
     <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/862654735">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.23 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Kinetic Bombardment</span>
+        <span class="titulo">Kinetic Bombardment</span>
       </span>
       <span class="detalle">// [Sci fi / VFX]</span>
     </a>
     <br>
     
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945218792">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.23 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Arcane</span>
+        <span class="titulo">Arcane</span>
       </span>
       <span class="detalle">// [Action / Cinematic]</span>
     </a>
     <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219050">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.23 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Hyper Light Breaker</span>
+        <span class="titulo">Hyper Light Breaker</span>
       </span>
       <span class="detalle">// [Sci fi / Cinematic]</span>
     </a>
     <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219092">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.22 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">The Last of Us Part. ll</span>
+        <span class="titulo">The Last of Us Part. ll</span>
       </span>
       <span class="detalle">// [Realistic / Gameplay]</span>
     </a>
     <br>
     
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945218774">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.22 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Celeste</span>
+        <span class="titulo">Celeste</span>
       </span>
       <span class="detalle">// [Retro / Gameplay]</span>
     </a>
     <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219193">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.22 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Dorfromantik</span>
+        <span class="titulo">Dorfromantik</span>
       </span>
       <span class="detalle">// [Satisfying / Gameplay]</span>
     </a>
     <br>
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945218935">
+    <a href="detalle-proyecto.html" class="proyecto">
       <span class="fecha">.22 //</span>
       <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Abzu</span>
+        <span class="titulo">Abzu</span>
       </span>
       <span class="detalle">// [Organic Sci fi / Gameplay]</span>
     </a>
@@ -616,7 +607,7 @@
       <!-- <iframe id="vimeoVideo" src="https://player.vimeo.com/video/76979871" 
         frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen> 
         </iframe> -->
-        <iframe id="vimeoVideo" src="" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <iframe id="vimeoVideo" src="" width="8000" height="450" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         <!-- <iframe id="video-frame" width="100%" height="450" frameborder="0" allowfullscreen></iframe> -->
     </div>
   </div>
@@ -686,77 +677,53 @@
     }
   </script> -->
 
-  <script>
-    const videos = [
-      "https://player.vimeo.com/video/1060002891",
-      "https://player.vimeo.com/video/1096667052",
-      "https://player.vimeo.com/video/1059826932"
-    ];
-  
-    const openBtn = document.getElementById('sound-btn');
-    const closeBtn = document.getElementById('closeLightbox');
-    const lightbox = document.getElementById('videoLightbox');
-    const iframe = document.getElementById('vimeoVideo');
-
-    // ✅ Recoger automáticamente todos los data-video de proyectos
-    const projectLinks = document.querySelectorAll('.proyecto[data-video]');
-    let videos2 = Array.from(projectLinks).map(link => link.getAttribute('data-video'));
-
-    const videosSum = [...videos, ...videos2];
-
-    let availableVideos = [...videosSum];
-  
-    // Función para abrir el lightbox con un video específico
-    function openLightbox(videoURL) {
-      iframe.src = videoURL;
-      lightbox.classList.add('active');
-    }
-  
-    // ✅ Función para cerrar y detener video
-    function closeLightbox() {
-      iframe.src = '';
-      lightbox.classList.remove('active');
-    }
-  
-    // ✅ Abrir con botón (video aleatorio)
-    openBtn.addEventListener('click', () => {
-      if (availableVideos.length === 0) {
-        availableVideos = [...videos];
-      }
-      const randomIndex = Math.floor(Math.random() * availableVideos.length);
-      const videoURL = availableVideos[randomIndex];
-      availableVideos.splice(randomIndex, 1);
-      openLightbox(videoURL);
-    });
-  
-    // Abrir lightbox solo en proyectos con data-video
-    projectLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const videoURL = link.getAttribute('data-video');
-        openLightbox(videoURL);
-      });
-    });
-  
-    // ✅ Cerrar con botón
-    closeBtn.addEventListener('click', closeLightbox);
-  
-    // ✅ Cerrar clic fuera
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-  </script>
-  
-
 <script>
-  document.querySelectorAll('a').forEach(function(enlace) {
-    enlace.setAttribute('target', '_blank');
+  const videos = [
+    "https://player.vimeo.com/video/1060002891",
+    "https://player.vimeo.com/video/1096667052",
+    "https://player.vimeo.com/video/1059826932"
+  ];
+  
+  const openBtn = document.getElementById('sound-btn');
+  const closeBtn = document.getElementById('closeLightbox');
+  const lightbox = document.getElementById('videoLightbox');
+  const video = document.getElementById('vimeoVideo');
+
+  // Copia para manipular los videos que quedan por reproducir
+  let availableVideos = [...videos];
+
+  openBtn.addEventListener('click', () => {
+    // Si no quedan videos disponibles, reiniciamos la lista
+    if (availableVideos.length === 0) {
+      availableVideos = [...videos];
+    }
+
+    // Elegir un video random
+    const randomIndex = Math.floor(Math.random() * availableVideos.length);
+    const videoURL = availableVideos[randomIndex];
+
+    // Select random
+    video.src = videoURL;
+
+    // Sacar el video que elegimos de la lista para no repetirlo
+    availableVideos.splice(randomIndex, 1);
+    
+    lightbox.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    // Detener el video al cerrar
+    video.src = video.src.replace("?autoplay=1", "");
+  });
+
+  // Cerrar al hacer clic fuera del contenido
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      video.src = video.src.replace("?autoplay=1", "");
+    }
   });
 </script>
-
-
-  
 </body>
 </html>
