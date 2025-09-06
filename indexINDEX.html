@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SERGI SABATER</title>
+
+
+
+  <!-- Fuentes y iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
+
+  <style> 
+    /* Container of all visible in screen */
+    body {
+        font-family: 'Ibarra Real Nova', serif;
+        height: 100%;
+        margin: 0;
+    }
+
+    header {
+        /* display: flex; */
+    }
+
+
+
+
+
+
+
+
+
+    /* Sub Selectors (groups for what is tagged basically) */
+    /* Containers */
+    .main-container {
+        display: flex;
+        width: 100%;
+        max-width: 1170px;
+        margin: 0 auto;     /* centra horizontalmente */
+        padding: 0 1rem;    /* espacio mínimo en los lados para móviles */
+        flex-direction: column;
+        min-height: 100vh; /* toma al menos el alto de la ventana */
+        justify-content: center; /* centra verticalmente si hay espacio */
+        text-align: center; /* opcional, para centrar el texto */
+        overflow: auto; /* scroll si el contenido no cabe */
+    }
+
+    .content-header-header {
+        text-align: center;
+    }
+
+    .header-img {
+        width: 150px;
+        height: 200px;
+        overflow: hidden;
+        margin: 0 auto;
+        border-radius: 0px; /* esquinas redondeadas (opcional) */
+        opacity: 1;       /* más transparente */
+        border: 0.05rem solid #000000;
+    }
+
+    .header-img img {
+        width: 100%;/* ocupa todo el ancho del contenedor */
+        height: 100%;/* mantiene proporción */
+        object-fit: cover;       /* mantiene proporción y recorta */
+        object-position: center; /* centra la imagen en el contenedor */
+    }
+ 
+    .content-header-title {
+        text-align: center;
+        font-size: 2.05rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    a.title-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .content-header-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .content-header-welcome {
+        text-align: justify;
+        text-align-last: center;
+        line-height: 1.5rem;  
+        font-size: 1.15rem;
+    }
+
+
+    .content-header-credits {
+        text-align: center;
+    }
+
+    /* Table 1 styles */
+    .table {
+        width: 50%;
+        border-collapse: collapse; /* Sin bordes entre celdas */
+        table-layout: fixed; /* Permite controlar ancho de columnas */
+        margin: 0 auto; /* Esto centra la tabla horizontalmente */
+    }
+
+    .table th, .table td {
+        padding: 0.15rem 0;
+        text-align: left;
+        word-wrap: break-word; /* Ajusta contenido largo en varias líneas */
+    }
+
+    /* Extra table column style */
+    .table .col-game {
+        width: 35%; 
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.95rem;
+        position: relative; /* Necesario para el pseudo-elemento */
+        cursor: pointer; /* Opcional, para indicar interactividad */
+    }
+    
+    /* Pseudo-elemento que hará el subrayado animado */
+    .table .col-game::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        /* top: 1px; */
+        bottom: 0.1rem;
+        height: 0.01rem; /* Grosor del subrayado */
+        width: 0; /* Comienza desde 0 */
+        max-width: 90%;
+        background-color: #49824F; /* Color del subrayado */
+        transition: width 0.5s ease; /* Duración de la animación */
+    }
+
+    .table .col-game:hover {
+        color:#49824F;
+    }
+
+    /* Al hacer hover, expandir el subrayado */
+    .table .col-game:hover::after {
+        width: 100%;
+    }
+    /* Extra table column style */
+    .table .col-date {
+         width: 30%; 
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    /* Extra table column style */
+    .table .col-credits {
+        width: 60%; 
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    /* Definir ancho de columnas */
+    .table .col1 { width: 20%; }
+    .table .col2 { width: 20%; }
+    .table .col3 { width: 90%; }
+
+
+
+
+    .toggle-texttable {
+        display: none;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    /* Table 2 styles */
+    .toggle-texttable {
+        width: 50%;
+        border-collapse: collapse; /* Sin bordes entre celdas */
+        table-layout: fixed; /* Permite controlar ancho de columnas */
+        margin: 0 auto; /* Esto centra la tabla horizontalmente */
+    }
+
+    .toggle-texttable th, .table td {
+        padding: 0.15rem 0; /* Ajusta espacio entre celdas */
+        text-align: center;
+        word-wrap: break-word; /* Ajusta contenido largo en varias líneas */
+    }
+
+    /* Extra table column style */
+    .toggle-texttable .col-game { 
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid #000000;
+    }
+    /* Extra table column style */
+    .toggle-texttable .col-credits { 
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    /* Extra table column style */
+    .toggle-texttable .col-style {
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    .toggle-texttable .col-contribution {
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    /* Definir ancho de columnas */
+    .toggle-texttable .col-game { width: 25%; }
+    .toggle-texttable .col-credits { width: 25%; }
+    .toggle-texttable .col-style { width: 25%; }
+    .toggle-texttable .col-contribution { width: 25%; }
+
+
+   footer {
+        position: fixed;
+        bottom: 0;
+        left: 50%;                   /* Centra horizontalmente */
+        transform: translateX(-50%); /* Ajusta para centrar según max-width */
+        width: 100%;                 /* Asegura que ocupa todo el ancho del viewport */
+        max-width: 1170px;           /* Ancho máximo */
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        border-top: 1px solid #ffffff;
+        color: #000;
+        background-color: #ffffff;
+        z-index: 1000;
+
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .footer-left {
+        margin-right: 1rem; /* espacio desde el centro hacia la izquierda */
+        position: relative;
+        color: inherit;
+        text-decoration: none; /* quitar subrayado por defecto */
+        cursor: pointer;
+    }
+
+    /* Línea de subrayado suave */
+    .footer-left::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0.1rem; /* grosor del underline */
+        left: 0;
+        bottom: 0;
+        background-color: #49824F; /* color al hacer hover */
+        transition: width 0.3s ease; /* transición suave */
+    }
+
+    /* Hover */
+    .footer-left:hover::after {
+        width: 100%; /* la línea crece hasta cubrir el texto */
+    }
+     .footer-left:hover {
+        color: #49824F;
+    }
+
+    .footer-right {
+        margin-left: 1rem; /* espacio desde el centro hacia la derecha */
+    }
+
+
+
+
+
+
+
+    /* Utilities */
+    .spacer {
+    height: 1.2rem; /* espacio vertical */
+    }
+
+    .spacer-line {
+    height: 0.1rem;             /* espacio entre líneas y contenido */
+    border-top: 1px solid #000;  /* primera línea */
+    border-bottom: 1px solid #000; /* segunda línea */
+    margin: 2rem 0;            /* opcional: espacio extra arriba y abajo */
+    }
+
+
+    .toggle-container {
+        margin: 20px;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 24px;
+        user-select: none;
+    }
+
+
+
+
+
+
+
+
+
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 400;
+      color: #000;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    h3 {
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-top: 0;
+      font-size: 1rem;
+      color: #000;
+    }
+
+
+
+
+
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+<div class="main-container">
+  <header>
+    <div class="content-header-header">
+
+        <!-- Imagen arriba -->
+        <div class="header-img">
+            <img src="me.jpg" alt="Imagen Sergi">
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- Título -->
+        <div class="content-header-title">
+            <a href="#" id="link-main1" class="title-link">Sergi Sabater</a>
+        </div>
+
+        <!-- Subtítulo -->
+        <div class="content-header-subtitle">
+            Sound designer specializing in videogames.
+        </div>
+
+    </div>
+
+    <div class="spacer" style="height: 2.7rem;"></div>
+
+    <div class="content-header-welcome">
+    Thomas van den Berg creates games and game-like things with a small studio named ‘noio games’. I love working on code & art, and the magic that happens when they come together. This page is a combination blog and portfolio of some things I've done. The best known thing I made is probably the Kingdom Series, a minimalist strategy game in a pixel art style. Want to get in touch? Ask anything? Just chat? You can always email or DM me.
+    </div>
+  </header>
+
+  <div class="spacer"></div>
+  <div class="spacer-line"></div>
+
+  <div class="content-header-credits">
+    <h3>CREDITS</h3>
+  </div>
+
+  <div class="spacer" style="--height: 0.9rem;"></div>
+
+    <table class="table">
+        <tr>
+            <td class="col-game">Tiny Aquarium</td>
+            <td class="col-date">2026 (wip)</td>
+            <td class="col-credits">- Additional Sound Design</td>
+        </tr>
+        <tr>
+            <td class="col-game">Bumpers & Dragons</td>
+            <td class="col-date">2026</td>
+            <td class="col-credits">- Sound Designer, Audio Implementation</td>
+        </tr>
+        <tr>
+            <td class="col-game">Tiny Aquarium</td>
+            <td class="col-date">2026 (wip)</td>
+            <td class="col-credits">- Additional Sound Design</td>
+        </tr>
+        <tr>
+            <td class="col-game">Tiny Aquarium</td>
+            <td class="col-date">2026 (wip)</td>
+            <td class="col-credits">- Additional Sound Design</td>
+        </tr>
+        <tr>
+            <td class="col-game">Bumpers & Dragons</td>
+            <td class="col-date">2026</td>
+            <td class="col-credits">- Sound Designer, Audio Implementation</td>
+        </tr>
+        <tr>
+            <td class="col-game">Tiny Aquarium</td>
+            <td class="col-date">2026 (wip)</td>
+            <td class="col-credits">- Additional Sound Design</td>
+        </tr>
+        
+    </table>
+
+    <div class="spacer-line"></div>
+
+    <div class="content-header-credits">
+        <h3>PRACTICES & EXPERIMENTS</h3>
+    </div>
+
+    <div class="toggle-container" id="toggleButton">+</div>
+        <table class="toggle-texttable" id="toggleTextTable">
+        <tr>
+            <th class="col-game">The Last of Us: Part IIsdfsdfsdfsdf</th>
+            <th class="col-credits">Naughty Dog</th>
+            <th class="col-style">- Style: Realistic</th>
+            <th class="col-contribution">- Sound Redesign</th>
+        </tr>
+        <tr>
+            <th class="col-game">The </th>
+            <th class="col-credits">dfgdfgdfgdfgdfgdfg</th>
+            <th class="col-style">- Style: Realistic</th>
+            <th class="col-contribution">- Sound Redesign</th>
+        </tr>
+        <tr>
+            <th class="col-game">The </th>
+            <th class="col-credits">fgfg</th>
+            <th class="col-style">- Style: Realistic cozy marionieorn</th>
+            <th class="col-contribution">- Sound Redesign</th>
+        </tr>
+    </table>
+
+
+    <div class="spacer-line"></div>
+</div>
+
+<footer>
+  <div class="footer-left">Legal</div>
+  <div class="footer-right">2025</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+  const button = document.getElementById('toggleButton');
+  const text = document.getElementById('toggleTextTable');
+
+  button.addEventListener('click', () => {
+    // Alterna la visibilidad del texto
+    if (text.style.display === 'none' || text.style.display === '') {
+      text.style.display = 'block';
+      button.textContent = '-'; // Cambia el icono a -
+    } else {
+      text.style.display = 'none';
+      button.textContent = '+'; // Cambia el icono a +
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

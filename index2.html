@@ -2,44 +2,57 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página Básica con Ibarra Real Nova</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SERGI SABATER</title>
 
   <!-- Fuentes y iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+
+
+
+
+<!-- Estilos -->
+ 
   <style>
     /* Reset y base */
     body {
       font-family: 'Ibarra Real Nova', serif;
-      margin: 0;
-      padding: 0;
+      /* margin: 0;
+      padding: 0; */
       background-color: #ffffff;
       color: #000;
+    }
+    .contenedor-main {
+      height: 100vh;
     }
 
     /* Header fijo */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
+      /* position: fixed; */
+      display: flex;
+      /* top: 0; */
+      /* left: 0; */
+      /* height: 100vh; */
       width: 100%;
       z-index: 1000;
+      margin: 0;
       background-color: #ffffff;
       border-bottom: 1px solid #ffffff;
       color: #000;
-      padding: 20px 0 5px;
+      /* padding: 20px 0 5px; */
+      justify-content: center; /* centra horizontalmente */
+      align-items: center;    /* centra verticalmente */
     }
 
     .contenedor-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: left;
-      max-width: 1150px;
-      margin: 0 auto;
-      padding: 0 20px;
-      text-align: left;
+      /* justify-content: space-between; */
+      align-items: center;
+      /* max-width: 1150px; */
+      /* margin: 0 auto; */
+      /* padding: 0 20px; */
+      text-align: center;
     }
 
     .header-img img {
@@ -142,7 +155,7 @@
       margin: 17.5rem auto 20px;
       padding: 0 20px;
       padding-bottom: 110px; /* Ajusta al alto real del footer */
-      text-align: left;
+      text-align: center;
     }
 
     p {
@@ -335,7 +348,7 @@
 <body>
     <!-- HOVER SOUNDS -->
     <!-- <audio id="hoverSound" src="hover.wav" preload="auto"></audio> -->
-
+<div class="contenedor-main"></div>
   <header>
     <div class="contenedor-header">
       <div class="header-text">
@@ -363,9 +376,9 @@
 
       </div>
 
-      <div class="header-img">
+      <!-- <div class="header-img">
         <img src="me.jpg" alt="Imagen Sergi">
-      </div>
+      </div> -->
     </div>
   </header>
 
@@ -620,7 +633,7 @@
         <!-- <iframe id="video-frame" width="100%" height="450" frameborder="0" allowfullscreen></iframe> -->
     </div>
   </div>
-
+</div>
   <footer>
     &copy; 2025
   </footer>
