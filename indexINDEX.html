@@ -15,11 +15,15 @@
 
 
   <style> 
+  * {
+  box-sizing: border-box;
+}
     /* Container of all visible in screen */
     body {
         font-family: 'Ibarra Real Nova', serif;
         height: 100%;
         margin: 0;
+        padding-top: 1rem; 
     }
 
     header {
@@ -91,7 +95,9 @@
         text-align: justify;
         text-align-last: center;
         line-height: 1.5rem;  
-        font-size: 1.15rem;
+        font-size: 1.15rem; 
+        margin-right: 2rem;
+        margin-left: 2rem;
     }
 
 
@@ -101,26 +107,29 @@
 
     /* Table 1 styles */
     .table {
-        width: 50%;
-        border-collapse: collapse; /* Sin bordes entre celdas */
-        table-layout: fixed; /* Permite controlar ancho de columnas */
-        margin: 0 auto; /* Esto centra la tabla horizontalmente */
+        width: 100%;
+        max-width: 670px;
+        border-collapse: separate;
+        border-spacing: 0.5rem 0;
+        margin: 0 auto;
     }
 
     .table th, .table td {
-        padding: 0.15rem 0;
+        /* padding: 0.15rem 0; */
         text-align: left;
-        word-wrap: break-word; /* Ajusta contenido largo en varias líneas */
+        /* border: 1px solid #000; */
+        padding: 0.5rem;
+        vertical-align: top;
     }
 
     /* Extra table column style */
     .table .col-game {
-        width: 35%; 
         text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
         position: relative; /* Necesario para el pseudo-elemento */
         cursor: pointer; /* Opcional, para indicar interactividad */
+        white-space: nowrap;
     }
     
     /* Pseudo-elemento que hará el subrayado animado */
@@ -141,32 +150,46 @@
         color:#49824F;
     }
 
+       
+    /* Tooltip base */
+    .table .col-game .tooltip-text {
+        position: fixed; /* Fijo en la pantalla */
+        background-color: #49824fbe;
+        color: white;
+        padding: 4px 16px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        pointer-events: none; /* Para que no interfiera con el hover */
+        opacity: 0;
+        transition: opacity 0.2s;
+        z-index: 1000;
+    }
+
     /* Al hacer hover, expandir el subrayado */
     .table .col-game:hover::after {
         width: 100%;
     }
     /* Extra table column style */
     .table .col-date {
-         width: 30%; 
         text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
+        white-space: nowrap;
     }
     /* Extra table column style */
     .table .col-credits {
-        width: 60%; 
         text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
+        padding-left: 4rem;
+        text-indent: -0.5rem;
     }
 
-    /* Definir ancho de columnas */
-    .table .col1 { width: 20%; }
-    .table .col2 { width: 20%; }
-    .table .col3 { width: 90%; }
 
 
 
+
+    /* Table 2 styles */
 
     .toggle-texttable {
         display: none;
@@ -174,11 +197,11 @@
         font-size: 18px;
     }
 
-    /* Table 2 styles */
     .toggle-texttable {
-        width: 50%;
-        border-collapse: collapse; /* Sin bordes entre celdas */
-        table-layout: fixed; /* Permite controlar ancho de columnas */
+        width: 100%;
+        max-width: 770px;
+        border-collapse: separate;
+        border-spacing: 1rem 0;
         margin: 0 auto; /* Esto centra la tabla horizontalmente */
     }
 
@@ -186,50 +209,87 @@
         padding: 0.15rem 0; /* Ajusta espacio entre celdas */
         text-align: center;
         word-wrap: break-word; /* Ajusta contenido largo en varias líneas */
+        vertical-align: top;
+        /* border: 1px solid gray; */
     }
 
     /* Extra table column style */
-    .toggle-texttable .col-game { 
-        text-align: center;
+    .toggle-texttable .col-experimentgame { 
+        text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
-        border: 1px solid #000000;
+        position: relative; /* Necesario para el pseudo-elemento */
+        cursor: pointer; /* Opcional, para indicar interactividad */
     }
+    /* Pseudo-elemento que hará el subrayado animado */
+    .toggle-texttable .col-experimentgame::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        /* top: 1px; */
+        bottom: 0.1rem;
+        height: 0.01rem; /* Grosor del subrayado */
+        width: 0; /* Comienza desde 0 */
+        max-width: 90%;
+        background-color: #49824F; /* Color del subrayado */
+        transition: width 0.5s ease; /* Duración de la animación */
+    }
+
+    .toggle-texttable .col-experimentgame:hover {
+        color:#49824F;
+    }
+
+    /* Al hacer hover, expandir el subrayado */
+    .toggle-texttable .col-experimentgame:hover::after {
+        width: 100%;
+    }
+
+    /* Tooltip base */
+    .toggle-texttable .col-experimentgame .tooltip2-text {
+        position: fixed; /* Fijo en la pantalla */
+        background-color: #49824fbe;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        pointer-events: none; /* Para que no interfiera con el hover */
+        opacity: 0;
+        transition: opacity 0.2s;
+        z-index: 1000;
+    }
+
     /* Extra table column style */
     .toggle-texttable .col-credits { 
-        text-align: center;
+        text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
     }
     /* Extra table column style */
     .toggle-texttable .col-style {
-        text-align: center;
+        text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
+        text-indent: -0.5rem;
     }
     .toggle-texttable .col-contribution {
-        text-align: center;
+        text-align: left;
         font-weight: 600;
         font-size: 0.95rem;
+        text-indent: -0.5rem;
     }
 
-    /* Definir ancho de columnas */
-    .toggle-texttable .col-game { width: 25%; }
-    .toggle-texttable .col-credits { width: 25%; }
-    .toggle-texttable .col-style { width: 25%; }
-    .toggle-texttable .col-contribution { width: 25%; }
 
 
    footer {
         position: fixed;
-        bottom: 0;
+        bottom: 10px;
         left: 50%;                   /* Centra horizontalmente */
         transform: translateX(-50%); /* Ajusta para centrar según max-width */
         width: 100%;                 /* Asegura que ocupa todo el ancho del viewport */
         max-width: 1170px;           /* Ancho máximo */
         padding: 10px 20px;
         font-size: 0.9rem;
-        border-top: 1px solid #ffffff;
+        border-top: 3px double #00000021;
         color: #000;
         background-color: #ffffff;
         z-index: 1000;
@@ -252,7 +312,7 @@
         content: "";
         position: absolute;
         width: 0;
-        height: 0.1rem; /* grosor del underline */
+        height: 0.01rem; /* grosor del underline */
         left: 0;
         bottom: 0;
         background-color: #49824F; /* color al hacer hover */
@@ -283,7 +343,7 @@
     }
 
     .spacer-line {
-    height: 0.1rem;             /* espacio entre líneas y contenido */
+    height: 0.18rem;             /* espacio entre líneas y contenido */
     border-top: 1px solid #000;  /* primera línea */
     border-bottom: 1px solid #000; /* segunda línea */
     margin: 2rem 0;            /* opcional: espacio extra arriba y abajo */
@@ -386,12 +446,18 @@
 
     <table class="table">
         <tr>
-            <td class="col-game">Tiny Aquarium</td>
+            <td class="col-game">
+                Tiny Aquarium
+                <span class="tooltip-text">A game by: Lunheim Studio</span>
+            </td>
             <td class="col-date">2026 (wip)</td>
             <td class="col-credits">- Additional Sound Design</td>
         </tr>
         <tr>
-            <td class="col-game">Bumpers & Dragons</td>
+            <td class="col-game">
+                Bumpers & Dragons
+                <span class="tooltip-text">Game by: Lunheim Studio</span>
+            </td>
             <td class="col-date">2026</td>
             <td class="col-credits">- Sound Designer, Audio Implementation</td>
         </tr>
@@ -427,19 +493,22 @@
     <div class="toggle-container" id="toggleButton">+</div>
         <table class="toggle-texttable" id="toggleTextTable">
         <tr>
-            <th class="col-game">The Last of Us: Part IIsdfsdfsdfsdf</th>
+            <th class="col-experimentgame">
+                The Last of Us: Part IIsdfsdfsdfsdf
+                <span class="tooltip2-text">Open Video on Vimeo</span>
+            </th>
             <th class="col-credits">Naughty Dog</th>
             <th class="col-style">- Style: Realistic</th>
             <th class="col-contribution">- Sound Redesign</th>
         </tr>
         <tr>
-            <th class="col-game">The </th>
+            <th class="col-experimentgame">The </th>
             <th class="col-credits">dfgdfgdfgdfgdfgdfg</th>
             <th class="col-style">- Style: Realistic</th>
             <th class="col-contribution">- Sound Redesign</th>
         </tr>
         <tr>
-            <th class="col-game">The </th>
+            <th class="col-experimentgame">The </th>
             <th class="col-credits">fgfg</th>
             <th class="col-style">- Style: Realistic cozy marionieorn</th>
             <th class="col-contribution">- Sound Redesign</th>
@@ -478,6 +547,41 @@
   });
 </script>
 
+<script>
+    const colGames = document.querySelectorAll('.col-game');
+
+    colGames.forEach(cell => {
+        const tooltip = cell.querySelector('.tooltip-text');
+
+        cell.addEventListener('mousemove', e => {
+            tooltip.style.left = e.clientX + 10 + 'px'; // 10px a la derecha del mouse
+            tooltip.style.top = e.clientY + 10 + 'px';  // 10px abajo del mouse
+            tooltip.style.opacity = 1;
+        });
+
+        cell.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = 0;
+        });
+    });
+</script>
+
+<script>
+    const colExperimentGames = document.querySelectorAll('.col-experimentgame');
+
+    colExperimentGames.forEach(cell => {
+        const tooltip = cell.querySelector('.tooltip2-text');
+
+        cell.addEventListener('mousemove', e => {
+            tooltip.style.left = e.clientX + 10 + 'px'; // 10px a la derecha del mouse
+            tooltip.style.top = e.clientY + 10 + 'px';  // 10px abajo del mouse
+            tooltip.style.opacity = 1;
+        });
+
+        cell.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = 0;
+        });
+    });
+</script>
 
 
 
