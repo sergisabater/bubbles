@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERGI SABATER</title>
+
+
+
+    <!-- Fuentes y iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+
+        }
+
+        /* Container of all visible in screen */
+        body {
+            font-family: 'Ibarra Real Nova', serif;
+            height: 100%;
+            margin: 0;
+            padding-top: 1rem;
+        }
+
+        header {
+            /* display: flex; */
+        }
+
+
+
+
+
+
+
+
+
+        /* Sub Selectors (groups for what is tagged basically) */
+        /* Containers */
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1170px;
+            margin: 0 auto;
+            /* centra horizontalmente */
+            padding: 0 1rem;
+            /* espacio mínimo en los lados para móviles */
+            flex-direction: column;
+            min-height: 100vh;
+            /* toma al menos el alto de la ventana */
+            justify-content: center;
+            /* centra verticalmente si hay espacio */
+            text-align: center;
+            /* opcional, para centrar el texto */
+            overflow: auto;
+            /* scroll si el contenido no cabe */
+        }
+
+        .content-header-header {
+            text-align: center;
+        }
+
+        .header-img {
+            width: 150px;
+            height: 200px;
+            overflow: hidden;
+            margin: 0 auto;
+            border-radius: 0px;
+            /* esquinas redondeadas (opcional) */
+            opacity: 1;
+            /* más transparente */
+            border: 0.05rem solid #000000;
+        }
+
+        .header-img img {
+            width: 100%;
+            /* ocupa todo el ancho del contenedor */
+            height: 100%;
+            /* mantiene proporción */
+            object-fit: cover;
+            /* mantiene proporción y recorta */
+            object-position: center;
+            /* centra la imagen en el contenedor */
+        }
+
+        .content-header-title {
+            text-align: center;
+            font-size: 2.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        a.title-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .content-header-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .content-header-welcome {
+            text-align: justify;
+            text-align-last: center;
+            line-height: 1.5rem;
+            font-size: 1.15rem;
+            margin-right: 2rem;
+            margin-left: 2rem;
+        }
+
+
+        .content-header-credits {
+            text-align: center;
+        }
+
+        /* Table 1 styles */
+        .table {
+            width: 100%;
+            max-width: 670px;
+            border-collapse: separate;
+            border-spacing: 0.5rem 0;
+            margin: 0 auto;
+        }
+
+        .table th,
+        .table td {
+            /* padding: 0.15rem 0; */
+            text-align: left;
+            /* border: 1px solid #000; */
+            padding: 0.5rem;
+            vertical-align: top;
+        }
+
+        /* Extra table column style */
+        .table .col-game {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            /* Necesario para el pseudo-elemento */
+            cursor: pointer;
+            /* Opcional, para indicar interactividad */
+            white-space: nowrap;
+        }
+
+        /* Pseudo-elemento que hará el subrayado animado */
+        .table .col-game::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            /* top: 1px; */
+            bottom: 0.1rem;
+            height: 0.01rem;
+            /* Grosor del subrayado */
+            width: 0;
+            /* Comienza desde 0 */
+            max-width: 90%;
+            background-color: #49824F;
+            /* Color del subrayado */
+            transition: width 0.5s ease;
+            /* Duración de la animación */
+        }
+
+        .table .col-game:hover {
+            color: #49824F;
+        }
+
+
+        /* Tooltip base */
+        .table .col-game .tooltip-text {
+            position: fixed;
+            /* Fijo en la pantalla */
+            background-color: #49824fbe;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            /* Para que no interfiera con el hover */
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+
+        /* Al hacer hover, expandir el subrayado */
+        .table .col-game:hover::after {
+            width: 100%;
+        }
+
+        /* Extra table column style */
+        .table .col-date {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        /* Extra table column style */
+        .table .col-credits {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding-left: 4rem;
+            text-indent: -0.5rem;
+        }
+
+
+
+
+
+        /* Table 2 styles */
+
+        .toggle-texttable {
+            display: none;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .toggle-texttable {
+            width: 100%;
+            max-width: 770px;
+            border-collapse: separate;
+            border-spacing: 1rem 0;
+            margin: 0 auto;
+            /* Esto centra la tabla horizontalmente */
+        }
+
+        .toggle-texttable th,
+        .table td {
+            padding: 0.15rem 0;
+            /* Ajusta espacio entre celdas */
+            text-align: center;
+            word-wrap: break-word;
+            /* Ajusta contenido largo en varias líneas */
+            vertical-align: top;
+            /* border: 1px solid gray; */
+        }
+
+        /* Extra table column style */
+        .toggle-texttable .col-experimentgame {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            /* Necesario para el pseudo-elemento */
+            cursor: pointer;
+            /* Opcional, para indicar interactividad */
+        }
+
+        /* Pseudo-elemento que hará el subrayado animado */
+        .toggle-texttable .col-experimentgame::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            /* top: 1px; */
+            bottom: 0.1rem;
+            height: 0.01rem;
+            /* Grosor del subrayado */
+            width: 0;
+            /* Comienza desde 0 */
+            max-width: 90%;
+            background-color: #49824F;
+            /* Color del subrayado */
+            transition: width 0.5s ease;
+            /* Duración de la animación */
+        }
+
+        .toggle-texttable .col-experimentgame:hover {
+            color: #49824F;
+        }
+
+        /* Al hacer hover, expandir el subrayado */
+        .toggle-texttable .col-experimentgame:hover::after {
+            width: 100%;
+        }
+
+        /* Tooltip base */
+        .toggle-texttable .col-experimentgame .tooltip2-text {
+            position: fixed;
+            /* Fijo en la pantalla */
+            background-color: #49824fbe;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            /* Para que no interfiera con el hover */
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+
+        /* Extra table column style */
+        .toggle-texttable .col-credits {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Extra table column style */
+        .toggle-texttable .col-style {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-indent: -0.5rem;
+        }
+
+        .toggle-texttable .col-contribution {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-indent: -0.5rem;
+        }
+
+
+
+        footer {
+            position: fixed;
+            bottom: 0px;
+            left: 50%;
+            /* Centra horizontalmente */
+            transform: translateX(-50%);
+            /* Ajusta para centrar según max-width */
+            width: 100%;
+            /* Asegura que ocupa todo el ancho del viewport */
+            max-width: 1170px;
+            /* Ancho máximo */
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-top: 3px double #00000021;
+            color: #000;
+            background-color: #ffffff;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-left {
+            margin-right: 1rem;
+            /* espacio desde el centro hacia la izquierda */
+            position: relative;
+            color: inherit;
+            text-decoration: none;
+            /* quitar subrayado por defecto */
+            cursor: pointer;
+        }
+
+        /* Línea de subrayado suave */
+        .footer-left::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0.01rem;
+            /* grosor del underline */
+            left: 0;
+            bottom: 0;
+            background-color: #49824F;
+            /* color al hacer hover */
+            transition: width 0.3s ease;
+            /* transición suave */
+        }
+
+        /* Hover */
+        .footer-left:hover::after {
+            width: 100%;
+            /* la línea crece hasta cubrir el texto */
+        }
+
+        .footer-left:hover {
+            color: #49824F;
+        }
+
+        .footer-right {
+            margin-left: 1rem;
+            /* espacio desde el centro hacia la derecha */
+        }
+
+
+
+
+
+
+
+        /* Utilities */
+        .spacer {
+            height: 1.2rem;
+            /* espacio vertical */
+        }
+
+        .spacer-line {
+            height: 0.18rem;
+            /* espacio entre líneas y contenido */
+            border-top: 1px solid #000;
+            /* primera línea */
+            border-bottom: 1px solid #000;
+            /* segunda línea */
+            margin: 2rem 0;
+            /* opcional: espacio extra arriba y abajo */
+        }
+
+
+        .toggle-container {
+            margin: 20px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 24px;
+            user-select: none;
+        }
+
+
+
+
+
+
+
+        .tables {
+            border-collapse: collapse;
+            width: 50%;
+            text-align: center;
+        }
+
+        .tables th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .tables th {
+            background-color: #f2f2f2;
+        }
+
+
+
+        .fila {
+            display: flex;
+            /* Activa flexbox */
+            gap: 1px;
+            /* Espacio entre columnas */
+            width: 50%;
+        }
+
+        .columna {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 5px;
+        }
+
+        /* En pantallas pequeñas */
+        @media (max-width: 600px) {
+            .columna {
+                font-size: 12px;
+                /* tamaño más pequeño en móvil */
+                border: 1px solid #ccc;
+            }
+
+            .tables th,
+            td {
+                font-size: 12px;
+            }
+
+            .game-title {
+                text-decoration: underline !important;
+            }
+        }
+
+
+
+        .col1 {
+            flex: 0 0 39%;
+            /* no crece, no encoge, ocupa 40% */
+            text-align: left;
+        }
+
+        .col2 {
+            flex: 0 0 19%;
+            /* no crece, no encoge, ocupa 20% */
+            text-align: left;
+        }
+
+        .col3 {
+            flex: 0 0 39%;
+            /* no crece, no encoge, ocupa 40% */
+            text-align: left;
+        }
+
+
+
+
+
+
+        .date {
+            font-weight: 700;
+            /* negrita, puedes ajustar 400, 500, etc. */
+        }
+
+        .game-title {
+            color: #0077cc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .game-title:hover {
+            color: #ff6600;
+            text-decoration: underline;
+        }
+
+        .role {
+            font-style: italic;
+            color: #555;
+        }
+
+        .project {
+            margin-bottom: 10px;
+        }
+
+
+
+
+
+
+        .project-content {
+            display: none;
+            /* Oculto al inicio */
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            background: none;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+
+
+
+
+
+
+
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            font-weight: 400;
+            color: #000;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+        }
+
+        h3 {
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-top: 0;
+            font-size: 1rem;
+            color: #000;
+        }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+    <div class="main-container">
+        <header>
+            <div class="content-header-header">
+
+                <!-- Imagen arriba -->
+                <div class="header-img">
+                    <img src="me.jpg" alt="Imagen Sergi">
+                </div>
+
+                <div class="spacer"></div>
+
+                <!-- Título -->
+                <div class="content-header-title">
+                    <a href="#" id="link-main1" class="title-link">Sergi Sabater</a>
+                </div>
+
+                <!-- Subtítulo -->
+                <div class="content-header-subtitle">
+                    Sound designer specializing in videogames.
+                </div>
+
+            </div>
+
+            <div class="spacer" style="height: 2.7rem;"></div>
+
+            <div class="content-header-welcome">
+                Thomas van den Berg creates games and game-like things with a small studio named ‘noio games’. I love
+                working on code & art, and the magic that happens when they come together. This page is a combination
+                blog and portfolio of some things I've done. The best known thing I made is probably the Kingdom Series,
+                a minimalist strategy game in a pixel art style. Want to get in touch? Ask anything? Just chat? You can
+                always email or DM me.
+            </div>
+        </header>
+
+        <div class="spacer"></div>
+        <div class="spacer-line"></div>
+
+        <div class="content-header-credits">
+            <h3>CREDITS</h3>
+        </div>
+
+        <div class="spacer" style="--height: 0.9rem;"></div>
+
+        <div class="project">
+            <span class="date">2026 (wip)</span> —
+            <a href="https://www.pizzapossum.com" target="_blank" class="game-title">Bumpers & Dragons</a><br>
+            <span class="role">- Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2025</span> —
+            <a href="https://www.pizzapossum.com" target="_blank" class="game-title">Tiny Aquarium</a><br>
+            <span class="role">- Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2023</span> —
+            <a href="https://www.pizzapossum.com" target="_blank" class="game-title">I.F.O.</a><br>
+            <span class="role">- Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2022</span> —
+            <a href="https://www.pizzapossum.com" target="_blank" class="game-title">Inner Tao</a><br>
+            <span class="role">- Sound Designer, Audio Implementation</span>
+        </div>
+
+
+        <div class="fila">
+            <div class="columna col1">Tiny Aquarium</div>
+            <div class="columna col2">2026 (wip)</div>
+            <div class="columna col3">Sound Designer, Audio Implementation</div>
+        </div>
+        <div class="fila">
+            <div class="columna col1">Bunpers & Dragons</div>
+            <div class="columna col2">2026</div>
+            <div class="columna col3">Sound Designer, Audio Implementation</div>
+        </div>
+
+        <table class="tables">
+            <tr>
+                <td>Tiny Aquarium</td>
+                <td>2026 (wip)</td>
+                <td>Sound Designer, Audio Implementation</td>
+            </tr>
+            <tr>
+                <td>Bumpers & Dragons</td>
+                <td>2026</td>
+                <td>Sound Designer, Audio Implementation</td>
+            </tr>
+            </tables>
+
+
+
+
+            <div class="spacer-line"></div>
+
+            <div class="content-header-credits">
+                <h3>PRACTICES & EXPERIMENTS</h3>
+            </div>
+
+
+
+            <!-- Botón para el primer grupo -->
+            <button class="toggle-button" data-group="grupo1">
+                <span class="symbol">+</span> Mostrar Grupo 1
+            </button>
+
+            <!-- Proyectos del grupo 1 -->
+            <div class="project-content grupo1">
+                <div class="project">
+                    <span class="date">Sound Redesign</span> —
+                    <a href="https://www.pizzapossum.com" target="_blank" class="game-title">The Last of Us: Part
+                        II</a><br>
+                    <span class="role">(Naughty Dog)</span>
+                </div>
+            </div>
+            <div class="project-content grupo1">
+                <div class="project">
+                    <span class="date">Sound Redesign</span> —
+                    <a href="https://example.com" target="_blank" class="game-title">Dorfromantil</a><br>
+                    <span class="role">(The Link Company)</span>
+                </div>
+            </div>
+
+            <!-- Botón para grupo 2 -->
+            <button class="toggle-button" data-group="grupo2"><span class="symbol">+</span> Mostrar Grupo 2
+            </button>
+
+            <!-- Proyectos del grupo 2 -->
+            <div class="project-content grupo2">
+                <div class="project">
+                    <span class="date">2024</span> —
+                    <a href="https://example.org" target="_blank" class="game-title">Mystic Quest</a><br>
+                    <span class="role">(Sound Designer)</span>
+                </div>
+            </div>
+            <div class="project-content grupo2">
+                <div class="project">
+                    <span class="date">2023</span> —
+                    <a href="https://example.net" target="_blank" class="game-title">Pixel Racer</a><br>
+                    <span class="role">(Composer & Audio Implementation)</span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="spacer-line"></div>
+    </div>
+
+    <footer>
+        <div class="footer-left">Legal</div>
+        <div class="footer-right">2025</div>
+    </footer>
+
+
+
+
+
+
+    <script>
+        const buttons = document.querySelectorAll('.toggle-button');
+
+        buttons.forEach(button => {
+            const groupClass = button.getAttribute('data-group');
+            const symbol = button.querySelector('.symbol'); // seleccionamos solo el +/-
+
+            button.addEventListener('click', () => {
+                const projects = document.querySelectorAll(`.${groupClass}`);
+                const anyHidden = Array.from(projects).some(p => p.style.display === 'none' || p.style.display === '');
+
+                projects.forEach(project => {
+                    project.style.display = anyHidden ? 'block' : 'none';
+                });
+
+                // Solo cambiamos el símbolo, no el texto del botón
+                symbol.textContent = anyHidden ? '-' : '+';
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <script>
+        const colGames = document.querySelectorAll('.col-game');
+
+        colGames.forEach(cell => {
+            const tooltip = cell.querySelector('.tooltip-text');
+
+            cell.addEventListener('mousemove', e => {
+                tooltip.style.left = e.clientX + 10 + 'px'; // 10px a la derecha del mouse
+                tooltip.style.top = e.clientY + 10 + 'px';  // 10px abajo del mouse
+                tooltip.style.opacity = 1;
+            });
+
+            cell.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = 0;
+            });
+        });
+    </script>
+
+    <script>
+        const colExperimentGames = document.querySelectorAll('.col-experimentgame');
+
+        colExperimentGames.forEach(cell => {
+            const tooltip = cell.querySelector('.tooltip2-text');
+
+            cell.addEventListener('mousemove', e => {
+                tooltip.style.left = e.clientX + 10 + 'px'; // 10px a la derecha del mouse
+                tooltip.style.top = e.clientY + 10 + 'px';  // 10px abajo del mouse
+                tooltip.style.opacity = 1;
+            });
+
+            cell.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = 0;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

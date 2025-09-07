@@ -1,762 +1,1944 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página Básica con Ibarra Real Nova</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERGI SABATER</title>
 
-  <!-- Fuentes y iconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <style>
-    /* Reset y base */
-    body {
-      font-family: 'Ibarra Real Nova', serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #000;
-    }
 
-    /* Header fijo */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ffffff;
-      color: #000;
-      padding: 20px 0 5px;
-    }
+    <!-- Fuentes y iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    .contenedor-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: left;
-      max-width: 1150px;
-      margin: 0 auto;
-      padding: 0 20px;
-      text-align: left;
-    }
+    <head>
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
 
-    .header-img img {
-      width: 110px;       /* tamaño del cuadrado */
-      height: 200px;
-      object-fit: cover;  /* mantiene proporción */
-      border-radius: 0px; /* esquinas redondeadas (opcional) */
-      opacity: 1;       /* más transparente */
-      margin-bottom: 1rem;
-      border: 1px solid #fff;
-    }
-    .header-img:hover{
-      animation: moverDerechaIzquierda 0.9s ease forwards;
-    }
 
-    @keyframes moverDerechaIzquierda {
-    0% {
-      transform: translateX(0);
-    }
-    33% {
-      transform: translateX(10px); /* Mover a la derecha */
-    }
-    66% {
-      transform: translateX(-10px); /* Mover a la izquierda */
-    }
-    100% {
-      transform: translateX(0); /* Volver al centro */
-    }
-  }
 
-    h1, h2, h3 {
-      margin: 0;
-      font-weight: 400;
-      color: #000;
-    }
 
-    h2 {
-      font-size: 1.1rem;
-    }
 
-    h3 {
-      font-weight: 900;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
 
-    a.home-link {
-      color: inherit;
-      text-decoration: none;
-    }
 
-    .titulo-subtitle, .titulo-others {
-      color: #000;
-    }
 
-    .titulo-others a.link-others {
-      font-size: 1.05rem;
-      font-weight: bold;
-      color: #000;
-      text-decoration: underline;
-      transition: font-size 0.1s ease, font-weight 0.1s ease;
-      margin-right: 0.3rem;
-    }
 
-    .titulo-others a.link-others:hover {
-      font-weight: 500;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
 
-    /* Social icons */
-    .social-icons {
-      margin-top: 10px;
-    }
 
-    .social-icons a {
-      color: #000;
-      margin: 0 0.1rem;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: color 0s ease, font-size 0.1s ease;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    .social-icons a:hover {
-      font-size: 1.1rem;
-    }
+        /* Container of all visible in screen */
+        body {
+            font-family: 'Ibarra Real Nova', serif;
+            height: 100%;
+            margin: 0 auto;
+            /* Esto centra horizontalmente */
+            margin-top: 3rem;
+            max-width: 1170px;
+        }
 
-    .social-icons a:nth-child(1):hover {
-      color: #0077b5; /* LinkedIn */
-    }
+        header {
+            /* display: flex; */
+        }
 
-    .social-icons a:nth-child(2):hover {
-      color: #5865F2; /* Discord */
-    }
 
-    /* Main y Sections */
-    main, section {
-      max-width: 1150px;
-      margin: 17.5rem auto 20px;
-      padding: 0 20px;
-      padding-bottom: 110px; /* Ajusta al alto real del footer */
-      text-align: left;
-    }
 
-    p {
-      margin-top: 0;
-      font-size: 1rem;
-      color: #000;
-    }
 
-    /* Proyectos */
-    .proyecto {
-      font-family: 'Ibarra Real Nova', serif;
-      font-size: 1rem;
-      margin-bottom: 5px;
-      display: inline-block;
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.1s ease, font-weight 0.1s ease, font-size 0.1s ease;
-    }
 
-    .proyecto span {
-      padding: 0px;
-    }
 
-    .fecha, .dev, .detalle {
-      color: #000;
-    }
 
-    .titulo {
-      font-size: 1rem;
-      color: #C7A44B;
-    }
 
-    .detalle {
-      color: #000;
-      margin-left: 0;
-      letter-spacing: 0;
-    }
 
-    .titulo-dev {
-      display: inline-block;
-      text-decoration: underline;
-      text-decoration-color: #000;
-      text-underline-offset: 0.15rem;
-      color: #333;
-    }
 
-    .proyecto:hover .fecha {
-      font-size: 0.85rem;
-    }
 
-    .proyecto:hover .titulo {
-      /* font-weight: bold; */
-      font-size: 1.3rem;
-      transition: font-size 0.1s ease;
-    }
 
-    .proyecto:hover .dev {
-      color: #000;
-      font-size: 1.1rem;
-    }
 
-    .proyecto:hover .detalle {
-      font-size: 0.95rem;
-    }
 
-    .proyecto:hover .titulo-dev {
-      text-decoration-color: #000;
-    }
 
-    /* Footer */
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9rem;
-      border-top: 1px solid #ffffff;
-      color: #000;
-      background-color: #ffffff; /* Fondo sólido para que no se vea el contenido detrás */
-      z-index: 1000; /* Para que quede por encima de otros elementos */
-    }
 
-    /* Botón sonidos (comentado en HTML) */
-    .sound-container {
-      margin-top: 30px;
-      align-items: center; /* centra verticalmente */
-      gap: 10px; /* espacio entre botón y texto */
-      display: flex;       /* agrega esto */
-    }
 
-    #sound-text {
-      font-size: 1rem;
-      font-weight: 100;
-      margin-left: 1rem;
-      display: inline-block; /* Por si había un display:block antes */
-      color: #3FB68B;
-    }
 
-    #sound-btn {
-      background-color: #333333;
-      font-size: 1rem;
-      padding: 15px 15px;
-      border: 0.5px solid #ffffff63;
-      border-radius: 0px;
-      cursor: pointer;
-      transition: background 0.1s ease, transform 0.1s ease;
-    }
 
-    #sound-btn:hover {
-      background-color: #2a7a5d;
-      transform: scale(0.90);
-      border: 1px solid #fff;
-    }
 
-    #sound-text:hover {
-      animation: moverDerechaIzquierda 0.3s ease forwards;
-    }
 
-    #sound-btn:active {
-      background-color: #333;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      animation: juicy-press 0.15s ease;
-    }
 
-    @keyframes juicy-press {
-      0% { transform: scale(1); }
-      40% { transform: scale(0.9); }
-      70% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
 
-    /* Lightbox */
 
-    .btn {
-    padding: 12px 24px;
-    background: #0077b6;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-  }
 
-  .lightbox {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
 
-  .lightbox.active {
-    display: flex;
-  }
 
-  .lightbox-content {
-    position: relative;
-    width: 80%;
-    max-width: 800px;
-  }
 
-  .lightbox iframe {
-    width: 100%;
-    height: 450px;
-    border:  1px solid #ffffff31;
-    border-radius: 10px;
-  }
 
-  .close-btn {
-    position: absolute;
-    top: -50px;
-    right: 0;
-    background: #ffffff00;
-    color: #333;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 50%;
-  }
-  </style>
+
+
+
+
+
+
+
+
+
+        /* Sub Selectors (groups for what is tagged basically) */
+        /* Containers */
+        .main-container {
+            display: flex;
+            width: 100%;
+            /* max-width: 1170px; */
+            margin: 0 auto;
+            /* centra horizontalmente */
+            padding: 0 1rem;
+            /* espacio mínimo en los lados para móviles */
+            flex-direction: column;
+            min-height: 100vh;
+            /* toma al menos el alto de la ventana */
+            justify-content: center;
+            /* centra verticalmente si hay espacio */
+            text-align: center;
+            /* opcional, para centrar el texto */
+            overflow: auto;
+            /* scroll si el contenido no cabe */
+        }
+
+        .content-header-header {
+            text-align: center;
+        }
+
+        .header-img {
+            width: 150px;
+            height: 200px;
+            overflow: hidden;
+            margin: 0 auto;
+            border-radius: 0px;
+            /* esquinas redondeadas (opcional) */
+            opacity: 1;
+            /* más transparente */
+            border: 0.05rem solid #000000;
+        }
+
+        .header-img img {
+            width: 100%;
+            /* ocupa todo el ancho del contenedor */
+            height: 100%;
+            /* mantiene proporción */
+            object-fit: cover;
+            /* mantiene proporción y recorta */
+            object-position: center;
+            /* centra la imagen en el contenedor */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .content-header-title {
+            text-align: center;
+            font-size: 2.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        a.title-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .content-header-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+
+        .social-icons {
+            /* Pone los iconos en fila */
+            /* Espacio entre ellos */
+            justify-content: center;
+            /* Centra horizontalmente */
+            width: 100%;
+            display: flex;
+        }
+
+        i {
+            font-size: 0.9rem;
+            margin: 0 10px;
+            color: #333;
+            transition: font-size 0.3s;
+            transition: color 0.1s;
+        }
+
+        i:hover {
+            color: #49824F;
+            font-size: 1.1rem;
+        }
+
+        .discord-icon .tooltip-discord {
+            position: fixed;
+            /* Igual que los otros tooltips */
+            background-color: #49824fbe;
+            /* Color oficial de Discord */
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            /* No bloquea el hover */
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            white-space: nowrap;
+            /* Para que no se corte el texto */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .content-header-welcome {
+            text-align: justify;
+            text-align-last: center;
+            line-height: 1.5rem;
+            font-size: 1.15rem;
+            margin-right: 2rem;
+            margin-left: 2rem;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .content-header-credits {
+            text-align: center;
+        }
+
+        .content-header-commentary {
+            text-align: center;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .project {
+            width: 100%;
+            /* Ocupa todo el ancho del contenedor */
+            max-width: 600px;
+            /* Limita el ancho máximo para que no se vea enorme en pantallas grandes */
+            margin: 0 auto 10px auto;
+            /* Centra el bloque en la pantalla */
+            text-align: center;
+            /* Alinea el contenido a la derecha dentro del bloque */
+            padding-left: 0%;
+            /* Empuja el contenido desde la izquierda */
+            box-sizing: border-box;
+            /* Asegura que el padding no rompa el ancho total */
+        }
+
+
+
+
+
+        .date {
+            font-weight: 600;
+            font-size: 0.9rem;
+            /* negrita, puedes ajustar 400, 500, etc. */
+        }
+
+        .game-title {
+            color: #49824F;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 700;
+            position: relative;
+            /* Necesario para el pseudo-elemento */
+            cursor: pointer;
+        }
+
+        /* Pseudo-elemento que hará el subrayado animado */
+        .game-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            /* top: 1px; */
+            bottom: 0.1rem;
+            height: 0.01rem;
+            /* Grosor del subrayado */
+            width: 0;
+            /* Comienza desde 0 */
+            max-width: 100%;
+            background-color: #49824F;
+            /* Color del subrayado */
+            transition: width 0.5s ease;
+            /* Duración de la animación */
+        }
+
+        .game-title:hover {
+            color: #49824f;
+            background-color: #a49c2963;
+        }
+
+        /* Al hacer hover, expandir el subrayado */
+        .game-title:hover::after {
+            width: 100%;
+        }
+
+        /* Tooltip base */
+        .game-title .tooltip-text {
+            position: fixed;
+            /* Fijo en la pantalla */
+            background-color: #49824fbe;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            /* Para que no interfiera con el hover */
+            opacity: 0;
+            transition: opacity 0.05s;
+            z-index: 1000;
+        }
+
+        .role {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .project-content {
+            display: none;
+            /* Oculto al inicio */
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-content.grupo2 {
+            margin-bottom: 0px;
+        }
+
+        .toggle-button {
+            font-weight: 500;
+            margin-bottom: 10px;
+            border: none;
+            background: none;
+            font-family: inherit;
+            color: inherit;
+            font-size: 0.9rem;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000000;
+            font-style: italic;
+        }
+
+
+        .toggle-button:hover {
+            color: #49824F;
+        }
+
+
+        .underline {
+            color: #00000071;
+            text-decoration: underline;
+            text-decoration-thickness: 0.01rem;
+            text-underline-offset: 3px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 1170px;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: #000;
+            z-index: 1000;
+            background-color: #fff;
+
+            display: flex;
+            /* ¡Importante! */
+            flex-direction: column;
+            /* apila texto e iconos verticalmente */
+            justify-content: center;
+            /* centra verticalmente dentro del footer */
+            align-items: center;
+            /* centra horizontalmente los hijos */
+            gap: 10px;
+            /* espacio entre texto y iconos */
+            border-top: 1px solid #00000092;
+        }
+
+        .footer-left {
+            /* margin-right: 1rem; */
+            /* espacio desde el centro hacia la izquierda */
+            position: relative;
+            color: inherit;
+            text-decoration: none;
+            /* quitar subrayado por defecto */
+            cursor: pointer;
+        }
+
+        /* Línea de subrayado suave */
+        .footer-left::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0.01rem;
+            /* grosor del underline */
+            left: 0;
+            bottom: 0;
+            background-color: #49824F;
+            /* color al hacer hover */
+            transition: width 0.3s ease;
+            /* transición suave */
+        }
+
+        /* Hover */
+        .footer-left:hover::after {
+            width: 100%;
+            /* la línea crece hasta cubrir el texto */
+        }
+
+        .footer-left:hover {
+            color: #49824F;
+        }
+
+        .footer-right {
+            margin-left: 1rem;
+            /* espacio desde el centro hacia la derecha */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #lightbox-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #lightbox-content {
+            position: relative;
+            max-width: 80%;
+            width: 800px;
+            aspect-ratio: 16/9;
+            z-index: 10;
+        }
+
+        #vimeo-video {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ffffff31;
+            border-radius: 10px;
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: #ffffff00;
+            color: #333;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Utilities */
+        .spacer {
+            height: 1.2rem;
+            /* espacio vertical */
+        }
+
+        .spacer-line {
+            height: 0.18rem;
+            /* espacio entre líneas y contenido */
+            border-top: 1px solid #00000092;
+            /* primera línea */
+
+            /* segunda línea */
+            margin: 2rem 0;
+            /* opcional: espacio extra arriba y abajo */
+        }
+
+
+        #legal-return {
+            font-family: 'Ibarra Real Nova', serif;
+            /* o cualquier fuente que quieras */
+            font-weight: 500;
+            /* opcional: negrita */
+            font-size: 1rem;
+            /* opcional: tamaño */
+            color: #000000;
+            /* opcional: color */
+            border-width: 1px;
+        }
+
+        #legal-return:hover {
+            background-color: #376638;
+            color: #ffffff;
+            border-width: 1px;
+            /* color al hacer hover */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* En pantallas pequeñas */
+        @media (max-width: 600px) {
+            .game-title {
+                text-decoration: underline !important;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            font-weight: 400;
+            color: #000;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+        }
+
+        h3 {
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-top: 0;
+            font-size: 1rem;
+            color: #000;
+        }
+    </style>
 </head>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- BODY------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+
+
+
+
 <body>
-    <!-- HOVER SOUNDS -->
-    <!-- <audio id="hoverSound" src="hover.wav" preload="auto"></audio> -->
+    <div class="main-container">
+        <header>
+            <div class="content-header-header">
 
-  <header>
-    <div class="contenedor-header">
-      <div class="header-text">
-        <h1><a href="#" id="link-main1" class="home-link">Sergi Sabater</a></h1>
-        <h2 class="titulo-subtitle">Sound designer specializing in videogames.</h2>
-        <h2 class="titulo-others">
-          <a href="#" id="link-main2" class="link-others">Work</a> /
-          <a href="#" id="link-bio" class="link-others">About</a> /
-          <a href="#" id="link-legal" class="link-others">Legal</a>
-        </h2>
+                <!-- Imagen arriba -->
+                <div class="header-img">
+                    <img src="me.jpg" alt="Imagen Sergi">
+                </div>
 
+
+
+
+
+
+                <div class="spacer"></div>
+
+
+
+
+
+
+
+                <!-- Título -->
+                <div class="content-header-title">
+                    <a href="#" id="link-main1" class="title-link">Sergi Sabater</a>
+                </div>
+
+                <!-- Subtítulo -->
+                <div class="content-header-subtitle">
+                    Sound designer specializing in videogames.
+                </div>
+
+                <div class="spacer" style="--height: 0.9rem;"></div>
+                <div class="social-icons">
+                    <a href="https://x.com/sergisabater_" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://bsky.app/profile/sergisabater.bsky.social" target="_blank">
+                        <i class="fa-brands fa-bluesky"></i>
+                    </a>
+                    <a href="#"
+                        onclick="navigator.clipboard.writeText('sergisabater'); 
+            this.querySelector('.tooltip-discord').textContent='Copied!'; 
+            setTimeout(()=>this.querySelector('.tooltip-discord').textContent='Click to copy my Discord username! @sergisabater',1500);"
+                        class="discord-icon">
+                        <i class="fab fa-discord"></i>
+                        <span class="tooltip-discord">Click to copy my Discord username! @sergisabater</span>
+                    </a>
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer" style="height: 2rem;"></div>
+
+
+
+
+
+            <!-- Contenedor para Legal -->
+            <div id="legal-text" style="display:none; text-align:center; margin:2rem;">
+                <h1>Impressum</h3>
+                    <div class="spacer" style="height: 1rem;"></div>
+                    <h3>Angaben gemäß § 5 TMG:</h3>
+                    <p>Sergi Sabater Bote<br>
+                        Gerberstraße, 7<br>
+                        67098, Bad Dürkheim
+                    </p>
+
+                    <h3>Kontakt:</h3>
+                    <p>quietsergi@gmail.com<br>+34 607 90 67 91</p>
+
+                    <h3>Berufsbezeichnung:</h3>
+                    <p>Freelancer im Bereich Sounddesign für Videospiele.</p>
+
+                    <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
+                    <p>Sergi Sabater Bote</p>
+
+                    <h3>Hinweis gemäß § 19 UStG:</h3>
+                    <p>Als Kleinunternehmer im Sinne des § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+
+                    <div class="spacer" style="height: 2.rem;"></div>
+                    <button id="legal-return"
+                        style="margin-top:1rem; padding:0.5rem 1rem; cursor:pointer;">Return</button>
+            </div>
+
+
+
+            <div class="content-header-welcome">
+                Thomas van den Berg creates games and game-like things with a small studio named ‘noio games’. I love
+                working on code & art, and the magic that happens when they come together. This page is a combination
+                blog and portfolio of some things I've done. The best known thing I made is probably the Kingdom Series,
+                a minimalist strategy game in a pixel art style. Want to get in touch? Ask anything? Just chat? You can
+                always email or DM me.
+            </div>
+        </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="spacer"></div>
+        <div class="spacer-line"></div>
+
+
+
+
+
+
+
+        <div class="content-header-credits">
+            <h3>GAME CREDITS</h3>
+        </div>
+        <div class="content-header-commentary">
+            Lovely projects with amazing people I had the pleasure to work with! Yours could be next! :)
+        </div>
+
+
+
+
+
+
+
+        <div class="spacer" style="--height: 0.9rem;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="project">
+            <span class="date">~ 2026</span> —
+            <a href="https://www.lunheimstudios.com/" target="_blank" class="game-title">
+                <span style="color: #49824f; font-size: 0.9rem;">ID</span>
+                <span class="tooltip-text">In development. A game by: Lunheim Studio</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class=" project">
+            <span class="date">~ 2026</span> —
+            <a href="https://le-slo.itch.io/" target="_blank" class="game-title">
+                <span style="color: #49824f; font-size: 0.9em;">ID</span>
+                <span class="tooltip-text">In development. A game by: Le Slo & taletronic</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class=" project">
+            <span class="date">2025</span> —
+            <a href="https://zartbitter-games.itch.io/kerogen" target="_blank" class="game-title">
+                Kerogen
+                <span class="tooltip-text">Game Demo by: Zartbitter Games</span>
+            </a>
+            <br>
+            <span class="role">Additional Sound Design</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2025</span> —
+            <a href="https://store.steampowered.com/app/2581950/Tiny_Aquarium_Social_Fishkeeping/" target="_blank"
+                class="game-title">
+                Tiny Aquarium
+                <span class="tooltip-text">A game by: Lunheim Studio</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2022</span> —
+            <a href="https://store.steampowered.com/app/1876000/IFO/" target="_blank" class="game-title">
+                I.F.O.
+                <span class="tooltip-text">A game by: Le Slo & taletronic</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2022</span> —
+            <a href="https://le-slo.itch.io/marzanna" target="_blank" class="game-title">
+                Marzanna
+                <span class="tooltip-text">A game by: Le Slo & taletronic</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer, Audio Implementation</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2021</span> —
+            <a href="https://store.steampowered.com/app/1115870/Inner_Tao/" target="_blank" class="game-title">
+                Inner Tao
+                <span class="tooltip-text">A game by: Le Slo</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer</span>
+        </div>
+
+        <div class="project">
+            <span class="date">2019-2022</span> —
+            <a href="https://le-slo.itch.io/" target="_blank" class="game-title">
+                Various Game Jams
+                <span class="tooltip-text">With: Le Slo</span>
+            </a>
+            <br>
+            <span class="role">Sound Designer</span>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="spacer-line"></div>
+
+
+
+
+
+
+
+
+
+
+        <div class="content-header-credits">
+            <h3>PRACTICES & EXPERIMENTS</h3>
+        </div>
+
+        <div class="content-header-commentary">
+            Sound experiments and practices I did for learning purposes or just for fun
+        </div>
+
+
+
+
+
+
+        <div class="spacer" style="--height: 0.9rem;"></div>
+
+
+
+
+
+
+
+        <!-- Botón para el primer grupo -->
+        <button class="toggle-button" data-group="grupo1">
+            <span class="symbol">+</span> <span class="text"> Show</span> Demo Reels
+        </button>
+
+
+        <!-- Proyectos del grupo 1 -->
+        <div class="project-content grupo1">
+            <div class="spacer" style="--height: 1px;"></div>
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/955975575?autoplay=0" class="game-title">Generic
+                    Sound Reel
+                    <span class="tooltip-text">Multiple games by: (see video description)</span></a>
+                <br>
+            </div>
+        </div>
+        <div class="project-content grupo1">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/920543305?autoplay=0" class="game-title">Deck 13
+                    Sound
+                    Reel
+                    <span class="tooltip-text">Games by: Deck 13 Interactive</span></a><br>
+            </div>
+
+
+            <div class="spacer" style="--height: 0.9rem;"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Botón para grupo 2 -->
+        <button class="toggle-button" data-group="grupo2"><span class="symbol">+</span> <span class="text"> Show</span>
+            Sound Redesigns
+        </button>
+
+        <!-- Proyectos del grupo 2 -->
+        <div class="project-content grupo2">
+            <div class="spacer" style="--height: 1px;"></div>
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://www.youtube.com/embed/iFm08HOOFsQ?autoplay=0" class="game-title">Outside
+                    The
+                    Blocks
+                    <span class="tooltip-text">A game by: Michał Kubas </span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://www.youtube.com/embed/kR9yWPU6B4I?autoplay=0" class="game-title">Mech
+                    Builder 3D
+                    <span class="tooltip-text">A game by: Don Pachi</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://www.youtube.com/embed/I3E8yOAETu4?autoplay=0"
+                    class="game-title">Rootbound
+                    <span class="tooltip-text">A game by: Brainlag Games</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://www.youtube.com/embed/R7N5zhD2Abo?autoplay=0"
+                    class="game-title">Homegrown
+                    <span class="tooltip-text">A game by: Thin Matrix</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/952226228?autoplay=0" class="game-title">Reveil
+                    <span class="tooltip-text">A game by: Pixelsplit</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/928819896?autoplay=0"
+                    class="game-title">Celestial Bodies. l
+                    <span class="tooltip-text">An animation by: Shelly Alon</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/928819991?autoplay=0"
+                    class="game-title">Celestial Bodies.
+                    ll
+                    <span class="tooltip-text">An animation by: Shelly Alon</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/945219135?autoplay=0" class="game-title">Super
+                    Smash Bros.
+                    Ultimate
+                    <span class="tooltip-text">A game by: Nintendo</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/862654735?autoplay=0" class="game-title">Kinetic
+                    Bombardment
+                    <span class="tooltip-text">An VFX by: Florian Dury </span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/945218792?autoplay=0" class="game-title">Arcane
+                    <span class="tooltip-text">A show by: Fortiche</span></a>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/945219092?autoplay=0" class="game-title">The Last
+                    of Us
+                    Part. ll
+                    <span class="tooltip-text">A game by: Naughty Dog</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/945218774?autoplay=0" class="game-title">Celeste
+                    <span class="tooltip-text">A game by: Extremely OK Games</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/945219193?autoplay=0"
+                    class="game-title">Dorfromantik
+                    <span class="tooltip-text">A game by: Toukana Interactive</span></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="project-content grupo2">
+            <div class="project">
+                —
+                <a href="#" data-vimeo="https://player.vimeo.com/video/945218935?autoplay=0" class="game-title">Abzu
+                    <span class="tooltip-text">A game by: Giant Squid</span></a>
+                <br>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="spacer-line"></div>
+        <div class="spacer" style="--height: 0.9rem;"></div>
+        <div class="spacer" style="--height: 0.9rem;"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <footer>
+        <div class="footer-left">Legal</div>
+        <div class="footer-right">Updated on: 09/2025</div>
         <div class="social-icons">
-          <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://discord.gg/tu-invitacion" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-discord"></i>
-          </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
+    </footer> -->
 
-        <div class="sound-container">
-          <button id="sound-btn"></button>
-          <span id="sound-text">// Press for a random example //</span>
+    <footer>
+
+        <div class="footer-left" id="legal-button">Legal</div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="lightbox" style="display:none;">
+        <div id="lightbox-bg"></div>
+        <div id="lightbox-content">
+            <iframe id="vimeo-video" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <button id="lightbox-close">✖</button>
         </div>
-
-      </div>
-
-      <div class="header-img">
-        <img src="me.jpg" alt="Imagen Sergi">
-      </div>
     </div>
-  </header>
-
-  <main id="main-content" style="display: block;">
-
-    <h3>Game Credits</h3>
-    <a href="https://www.lunheimstudios.com/" class="proyecto">
-      <span class="fecha">(In development) .26 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">???</span>
-        <span class="dev">by: Lunheim Studios</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
-    </a>
-    <br>
-
-    <a href="https://silberheim.com/de/" class="proyecto">
-      <span class="fecha">(In development) .26 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Silberheim</span>
-        <span class="dev">by: Beyond Worlds</span>
-      </span>
-      <span class="detalle">// [Sound design]</span>
-    </a>
-    <br>
-
-    <a class="proyecto">
-      <span class="fecha">(In development) .26 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Trooops!</span>
-        <span class="dev">by: Le slo, taletronic</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Godot)]</span>
-    </a>
-    <br>
 
 
-    <a href="https://store.steampowered.com/app/2581950/Tiny_Aquarium_Social_Fishkeeping/" class="proyecto">
-      <span class="fecha">(released) .25 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Tiny Aquarium</span>
-        <span class="dev">by: Lunheim Studios</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
-    </a>
-    <br>
-
-    <a href="https://store.steampowered.com/app/1876000/IFO/" class="proyecto">
-      <span class="fecha">(released) .22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">I.F.O.</span>
-        <span class="dev">by: Le slo, taletronic</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
-    </a>
-    <br>
-
-    <a href="https://le-slo.itch.io/marzanna" class="proyecto">
-      <span class="fecha">(released) .22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Marzanna</span>
-        <span class="dev">by: Le slo, taletronic</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
-    </a>
-    <br>
-
-    <a href="https://store.steampowered.com/app/1115870/Inner_Tao/" class="proyecto">
-      <span class="fecha">(released) .21 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Inner Tao</span>
-        <span class="dev">by: Le slo</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Unity) / Audio Middleware Implementation (FMOD)]</span>
-    </a>
-    <br>
-
-    <a href="https://le-slo.itch.io/" class="proyecto">
-      <span class="fecha">(released) .19 - .22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Game Jams</span>
-        <span class="dev">by: Le slo</span>
-      </span>
-      <span class="detalle">// [Sound design / Audio Programming (Game Maker Studio 2)]</span>
-    </a>
-    <br>
-    <br>
-
-    <h3>Personal Projects</h3>
-    <a class="proyecto">
-      <span class="fecha">(In development) .25 //</span>
-      <span class="titulo-dev">
-        <span class="titulo">Bubbl (Provisional title)</span>
-      </span>
-      <span class="detalle">// My own tiny game! A simple idle, bubble exploading game, made to learn deeper Unity functionalities</span>
-    </a>
-    <br>
-    <br>
-
-    <h3>Practice Designs</h3>
-      
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/952226228">
-      <span class="fecha">.24 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Reveil</span>
-      </span>
-      <span class="detalle">// [Psychological / Gameplay]</span>
-    </a>
-    <br>    
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/928819896">
-      <span class="fecha">.24 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Celestial Bodies. l</span>
-      </span>
-      <span class="detalle">// [Retro - Sci fi / Animation]</span>
-    </a>
-    <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/928819991">
-      <span class="fecha">.24 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Celestial Bodies. ll</span>
-      </span>
-      <span class="detalle">// [Retro - Sci fi / Animation]</span>
-    </a>
-    <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219135">
-      <span class="fecha">.23 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Super Smash Bros. Ultimate</span>
-      </span>
-      <span class="detalle">// [Action / Cinematic]</span>
-    </a>
-    <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/862654735">
-      <span class="fecha">.23 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Kinetic Bombardment</span>
-      </span>
-      <span class="detalle">// [Sci fi / VFX]</span>
-    </a>
-    <br>
-    
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945218792">
-      <span class="fecha">.23 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Arcane</span>
-      </span>
-      <span class="detalle">// [Action / Cinematic]</span>
-    </a>
-    <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219050">
-      <span class="fecha">.23 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Hyper Light Breaker</span>
-      </span>
-      <span class="detalle">// [Sci fi / Cinematic]</span>
-    </a>
-    <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219092">
-      <span class="fecha">.22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">The Last of Us Part. ll</span>
-      </span>
-      <span class="detalle">// [Realistic / Gameplay]</span>
-    </a>
-    <br>
-    
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945218774">
-      <span class="fecha">.22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Celeste</span>
-      </span>
-      <span class="detalle">// [Retro / Gameplay]</span>
-    </a>
-    <br>
-
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945219193">
-      <span class="fecha">.22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Dorfromantik</span>
-      </span>
-      <span class="detalle">// [Satisfying / Gameplay]</span>
-    </a>
-    <br>
-    <a href="#" class="proyecto" data-video="https://player.vimeo.com/video/945218935">
-      <span class="fecha">.22 //</span>
-      <span class="titulo-dev">
-        <span class="titulo" style="color: #3FB68B;">Abzu</span>
-      </span>
-      <span class="detalle">// [Organic Sci fi / Gameplay]</span>
-    </a>
-    <br>
-
-  </main>
-
-  <section id="bio-section" style="display: none;">
-    <p>Hellow, good to see you here!<br>
-    This is Sergi — I design sounds and implement audio systems for games.<br>
-    Here you'll find bits about me in a FAQ format.</p>
-
-    <h3>Age and Location:</h3>
-    <p>26 years old.<br>Bad Dürkheim, Germany.</p>
-
-    <h3>Favourite games?</h3>
-    <p>· On life impact: Sky: Children of the Light (I met my partner in the game!)<br>
-    · Exploration & Immersion: Hollow Knight<br>
-    · Storyline : Pokemon Mystery Dungeon: Explorers of the Sky (Made the 9-years-old me cry over a game for the first time...)</p>
-
-    <h3>Favourite sounds in games?</h3>
-    <p>· Hollow Knight Ambiences... They are amazing, you can almost SMELL them.<br>
-    · Dog barks from Inside. I truly believe they couldn't have picked a better sound for it.</p>
-
-    <p>If you would like to chat about nerdy game audio things you can find me on discord or reach out via linkedin :)</p>
-  </section>
-
-  <section id="legal-section" style="display: none;">
-    <h3>Impressum</h3>
-    <h3>Angaben gemäß § 5 TMG:</h3>
-    <p>Sergi Sabater Bote<br>
-      Gerberstraße, 7<br>
-      67098, Bad Dürkheim
-    </p>
-
-    <h3>Kontakt:</h3>
-    <p>quietsergi@gmail.com<br>+34 607 90 67 91</p>
-
-    <h3>Berufsbezeichnung:</h3>
-    <p>Freelancer im Bereich Sounddesign für Videospiele.</p>
-
-    <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
-    <p>Sergi Sabater Bote</p>
-
-    <h3>Hinweis gemäß § 19 UStG:</h3>
-    <p>Als Kleinunternehmer im Sinne des § 19 UStG wird keine Umsatzsteuer berechnet.</p>
-  </section>
 
 
-  <div class="lightbox" id="videoLightbox">
-    <div class="lightbox-content">
-      <button class="close-btn" id="closeLightbox">&times;</button>
-      <!-- Video de Vimeo -->
-      <!-- <iframe id="vimeoVideo" src="https://player.vimeo.com/video/76979871" 
-        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen> 
-        </iframe> -->
-        <iframe id="vimeoVideo" src="" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        <!-- <iframe id="video-frame" width="100%" height="450" frameborder="0" allowfullscreen></iframe> -->
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2025
-  </footer>
 
 
-  <script>
-    // Mostrar secciones según clicks en links header
-    const mainContent = document.getElementById('main-content');
-    const bioSection = document.getElementById('bio-section');
-    const legalSection = document.getElementById('legal-section');
-    const linkMain1 = document.getElementById('link-main1');
-    const linkMain2 = document.getElementById('link-main2');
-    const linkBio = document.getElementById('link-bio');
-    const linkLegal = document.getElementById('link-legal');
-
-    linkMain1.addEventListener('click', e => {
-      e.preventDefault();
-      mainContent.style.display = 'block';
-      bioSection.style.display = 'none';
-      legalSection.style.display = 'none';
-    });
-
-    linkMain2.addEventListener('click', e => {
-      e.preventDefault();
-      mainContent.style.display = 'block';
-      bioSection.style.display = 'none';
-      legalSection.style.display = 'none';
-    });
-
-    linkBio.addEventListener('click', e => {
-      e.preventDefault();
-      mainContent.style.display = 'none';
-      bioSection.style.display = 'block';
-      legalSection.style.display = 'none';
-    });
-
-    linkLegal.addEventListener('click', e => {
-      e.preventDefault();
-      mainContent.style.display = 'none';
-      bioSection.style.display = 'none';
-      legalSection.style.display = 'block';
-    });
-  </script>
-
-  <!-- <script>
-    // Botón sonidos (comentado en HTML, activar solo si se usa)
-    const soundBtn = document.getElementById('sound-btn');
-    const soundText = document.getElementById('sound-text');
-
-    if (soundBtn && soundText) {
-      const sounds = [
-        { name: 'TinyAquarium_Purchase', path: 'sounds/sonido1.mp3' },
-        { name: 'TinyAquarium_Die', path: 'sounds/sonido2.mp3' },
-        { name: 'TinyAquarium_Feed', path: 'sounds/sonido3.mp3' }
-      ];
-
-      soundBtn.addEventListener('click', () => {
-        const randomIndex = Math.floor(Math.random() * sounds.length);
-        const selectedSound = sounds[randomIndex];
-        soundText.textContent = `Practice Design: ${selectedSound.name}`;
-        new Audio(selectedSound.path).play();
-      });
-    }
-  </script> -->
-
-  <script>
-    const videos = [
-      "https://player.vimeo.com/video/1060002891",
-      "https://player.vimeo.com/video/1096667052",
-      "https://player.vimeo.com/video/1059826932"
-    ];
-  
-    const openBtn = document.getElementById('sound-btn');
-    const closeBtn = document.getElementById('closeLightbox');
-    const lightbox = document.getElementById('videoLightbox');
-    const iframe = document.getElementById('vimeoVideo');
-
-    // ✅ Recoger automáticamente todos los data-video de proyectos
-    const projectLinks = document.querySelectorAll('.proyecto[data-video]');
-    let videos2 = Array.from(projectLinks).map(link => link.getAttribute('data-video'));
-
-    const videosSum = [...videos, ...videos2];
-
-    let availableVideos = [...videosSum];
-  
-    // Función para abrir el lightbox con un video específico
-    function openLightbox(videoURL) {
-      iframe.src = videoURL;
-      lightbox.classList.add('active');
-    }
-  
-    // ✅ Función para cerrar y detener video
-    function closeLightbox() {
-      iframe.src = '';
-      lightbox.classList.remove('active');
-    }
-  
-    // ✅ Abrir con botón (video aleatorio)
-    openBtn.addEventListener('click', () => {
-      if (availableVideos.length === 0) {
-        availableVideos = [...videos];
-      }
-      const randomIndex = Math.floor(Math.random() * availableVideos.length);
-      const videoURL = availableVideos[randomIndex];
-      availableVideos.splice(randomIndex, 1);
-      openLightbox(videoURL);
-    });
-  
-    // Abrir lightbox solo en proyectos con data-video
-    projectLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const videoURL = link.getAttribute('data-video');
-        openLightbox(videoURL);
-      });
-    });
-  
-    // ✅ Cerrar con botón
-    closeBtn.addEventListener('click', closeLightbox);
-  
-    // ✅ Cerrar clic fuera
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-  </script>
-  
-
-<script>
-  document.querySelectorAll('a').forEach(function(enlace) {
-    enlace.setAttribute('target', '_blank');
-  });
-</script>
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- SCRIPT------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+
+
+
+
+
+    <script>
+        const buttons = document.querySelectorAll('.toggle-button');
+
+        buttons.forEach(button => {
+            const groupClass = button.getAttribute('data-group');
+            const symbol = button.querySelector('.symbol'); // seleccionamos solo el +/-
+            const text = button.querySelector('.text');     // para texto Show/Hide
+
+            button.addEventListener('click', () => {
+                const projects = document.querySelectorAll(`.${groupClass}`);
+                const anyHidden = Array.from(projects).some(p => p.style.display === 'none' || p.style.display === '');
+
+                projects.forEach(project => {
+                    project.style.display = anyHidden ? 'block' : 'none';
+                });
+
+                // Cambiamos el símbolo
+                symbol.textContent = anyHidden ? '-' : '+';
+                text.textContent = anyHidden ? 'Hide' : 'Show';
+
+                // Subrayamos el texto del botón
+                if (anyHidden) {
+                    button.classList.add('underline');
+                } else {
+                    button.classList.remove('underline');
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // Para títulos de juegos
+        const colGames = document.querySelectorAll('.game-title');
+        colGames.forEach(cell => {
+            const tooltip = cell.querySelector('.tooltip-text');
+            cell.addEventListener('mousemove', e => {
+                tooltip.style.left = e.clientX + 10 + 'px';
+                tooltip.style.top = e.clientY + 10 + 'px';
+                tooltip.style.opacity = 1;
+            });
+            cell.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = 0;
+            });
+        });
+
+        // Para experiment games
+        const colExperimentGames = document.querySelectorAll('.col-experimentgame');
+        colExperimentGames.forEach(cell => {
+            const tooltip = cell.querySelector('.tooltip2-text');
+            cell.addEventListener('mousemove', e => {
+                tooltip.style.left = e.clientX + 10 + 'px';
+                tooltip.style.top = e.clientY + 10 + 'px';
+                tooltip.style.opacity = 1;
+            });
+            cell.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = 0;
+            });
+        });
+
+        // 🔹 Para el icono de Discord
+        const discordIcons = document.querySelectorAll('.discord-icon');
+        discordIcons.forEach(icon => {
+            const tooltip = icon.querySelector('.tooltip-discord');
+            icon.addEventListener('mousemove', e => {
+                tooltip.style.left = e.clientX + 10 + 'px';
+                tooltip.style.top = e.clientY + 10 + 'px';
+                tooltip.style.opacity = 1;
+            });
+            icon.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = 0;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const links = document.querySelectorAll('.game-title');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxBg = document.getElementById('lightbox-bg');
+        const closeBtn = document.getElementById('lightbox-close');
+        const iframe = document.getElementById('vimeo-video');
+
+        links.forEach(link => {
+            // Solo interceptamos enlaces que tengan data-vimeo o data-youtube
+            if (link.dataset.vimeo || link.dataset.youtube) {
+                link.addEventListener('click', e => {
+                    e.preventDefault(); // solo bloquea lightbox
+                    const videoUrl = link.dataset.vimeo || link.dataset.youtube;
+                    iframe.src = videoUrl.includes('vimeo')
+                        ? videoUrl + "?autoplay=1"
+                        : videoUrl.replace("watch?v=", "embed/") + "?autoplay=1"; // Para YouTube
+                    lightbox.style.display = 'flex';
+                });
+            }
+            // Los enlaces normales se abren normalmente
+        });
+
+        const closeLightbox = () => {
+            lightbox.style.display = 'none';
+            iframe.src = ""; // detener video
+        };
+
+        lightboxBg.addEventListener('click', closeLightbox);
+        closeBtn.addEventListener('click', closeLightbox);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const legalButton = document.getElementById('legal-button');
+        const legalText = document.getElementById('legal-text');
+        const mainContainer = document.querySelector('.main-container');
+        const legalReturn = document.getElementById('legal-return');
+        const welcome = document.querySelector('.content-header-welcome');
+
+        // Guardamos el texto original del footer
+        const originalFooterText = legalButton.textContent;
+
+        legalButton.addEventListener('click', () => {
+            // Oculta todo excepto header y legal-text
+            Array.from(mainContainer.children).forEach(child => {
+                if (!child.querySelector('.content-header-header') && child.id !== 'legal-text') {
+                    child.style.display = 'none';
+                }
+            });
+
+            if (welcome) welcome.style.display = 'none';
+
+            // Oculta todos los proyectos también
+            document.querySelectorAll('.project-content').forEach(pc => {
+                pc.style.display = 'none';
+            });
+
+            // Muestra la sección Legal
+            legalText.style.display = 'block';
+
+            // Cambiamos el texto del footer a "Home"
+            legalButton.textContent = 'Home';
+        });
+
+        // Cuando se hace clic en Return
+        legalReturn.addEventListener('click', () => {
+            // Muestra de nuevo todos los hijos del contenedor excepto los proyectos (estos quedan cerrados)
+            Array.from(mainContainer.children).forEach(child => {
+                if (!child.classList.contains('project-content')) {
+                    child.style.display = 'block';
+                }
+            });
+
+            if (welcome) welcome.style.display = 'block';
+
+            // Oculta la sección Legal
+            legalText.style.display = 'none';
+
+            // Restauramos el texto original del footer
+            legalButton.textContent = originalFooterText;
+
+            // Aseguramos que todos los proyectos queden cerrados
+            document.querySelectorAll('.project-content').forEach(pc => {
+                pc.style.display = 'none';
+            });
+
+            // Restauramos todos los botones "Show/Hide" a estado inicial
+            const toggleButtons = document.querySelectorAll('.toggle-button');
+            toggleButtons.forEach(button => {
+                const symbol = button.querySelector('.symbol');
+                const text = button.querySelector('.text');
+                symbol.textContent = '+';
+                text.textContent = 'Show';
+                button.classList.remove('underline');
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
+
 </html>
